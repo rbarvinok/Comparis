@@ -34,7 +34,8 @@
             </Menu>
                 <Menu mnemonicParsing="false" text="Допомога">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#onClickDovBtn" text="Довідка" />
+                        <MenuItem mnemonicParsing="false" onAction="#onClickMenuHAM" text="Керівництво НАМ" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickDovBtn" text="Керівництво оператора ПЗ" />
                   <MenuItem mnemonicParsing="false" onAction="#onClick_menuAbout" text="Про програму" />
                     </items>
                 </Menu>

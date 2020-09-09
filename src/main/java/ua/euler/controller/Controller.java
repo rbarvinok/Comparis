@@ -32,7 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ua.euler.javaclass.QuaternionToEulerAnglesConvectorNonNormalised.*;
+import static ua.euler.javaclass.QuaternionToEulerAnglesConvectorNonNormalised.calculateAltVelocity;
+import static ua.euler.javaclass.QuaternionToEulerAnglesConvectorNonNormalised.quaternionToEulerAnglesBulk;
 import static ua.euler.javaclass.servisClass.FileChooserRun.selectedOpenFile;
 
 @Slf4j
@@ -290,10 +291,19 @@ public class Controller {
         }
     }
 
-    public void onClickDovBtn(ActionEvent actionEvent) {
-        inform.hd = "Конвертор кватерніонів в кути Ейлера";
-        inform.ct = " 1. Відкрити файл вихідних даних\n 2. Натиснути кнопку Розрахувати \n 3. Зберегти розраховані дані в вихідний файл\n";
-        inform.inform();
+       public void onClickDovBtn(ActionEvent actionEvent) throws IOException {
+        String url = "D:/EulerConverter/userManual/UserManual_Euler.pdf";
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(url));
+
+    }
+
+    public void onClickMenuHAM(ActionEvent actionEvent) throws IOException {
+        if (Desktop.isDesktopSupported()) {
+            String url = "D:/EulerConverter/userManual/UserManual_HAM.pdf";
+            Desktop desktop = Desktop.getDesktop();
+            desktop.open(new File(url));
+        }
     }
 
     public void onClick_menuAbout(ActionEvent actionEvent) throws IOException {
@@ -337,12 +347,8 @@ public class Controller {
 
     public void progressIndicatorRun() {
         Platform.runLater(() -> {
-//            @SneakyThrows
-//            @Override
-//            public void run() {
             progressIndicator.setVisible(true);
             statusBar.setText("Зачекайте...");
-//            }
         });
     }
 

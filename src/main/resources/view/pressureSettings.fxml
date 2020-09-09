@@ -22,7 +22,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="valueTip" layoutX="76.0" layoutY="109.0" mnemonicParsing="false" onAction="#onClickValueTip" styleClass="button1" stylesheets="@../styles/day.css" text="В міліметрах ртутного стовба" textFill="#1465c9" underline="true" />
+      <Button fx:id="valueTip" layoutX="76.0" layoutY="109.0" mnemonicParsing="false" onAction="#onClickValueTip" styleClass="button1" stylesheets="@../styles/day.css" text="В міліметрах ртутного стовпа" textFill="#1465c9" underline="true" />
       <Button fx:id="reset" layoutX="432.0" layoutY="109.0" mnemonicParsing="false" onAction="#onClickReset" styleClass="button1" stylesheets="@../styles/day.css" text="Reset" textFill="#1465c9" underline="true" AnchorPane.rightAnchor="34.0" />
       <Label layoutX="65.0" layoutY="145.0" prefHeight="25.0" prefWidth="421.0" text="Для переахунку даних необхідно повторно відкрити файл " textFill="#e80303">
          <font>

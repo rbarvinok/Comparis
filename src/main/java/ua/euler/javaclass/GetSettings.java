@@ -17,8 +17,7 @@ public class GetSettings {
         while ((line1 = bufferedReader1.readLine()) != null) {
 
             if (lineNumber1 == 0) {
-                pressureNull = Double.parseDouble(line1.split("=")[1]);
-                //System.out.println(pressureNull);
+                pressureNull = Double.parseDouble(line1.split("=")[1]); 
             }
         }
         fileReader1.close();

@@ -23,15 +23,14 @@ public class PressureSettings {
     @FXML
     public Button SaveNewPressure, valueTip;
 
-
-
     public void onClickNewPressure(ActionEvent event) throws IOException {
         if (labelPressureType.getText().equals("Па"))
             try {
                 newPressure = Double.parseDouble(PressureInput.getText().replace(",", "."));
             } catch (NumberFormatException e) {
                 inform.hd = "Помилка! ";
-                inform.ct = "Невірний формат даних\n";
+                inform.hd = "Невірний формат даних\n";
+                inform.ct = "Поле для вводу не може бути пустим та має містити тільки цифрові значення\n";
                 inform.alert();
                 PressureInput.setText("");
                 return;
@@ -42,7 +41,8 @@ public class PressureSettings {
                 newPressure = Double.parseDouble(PressureInput.getText().replace(",", ".")) * 133.322;
             } catch (NumberFormatException e) {
                 inform.hd = "Помилка! ";
-                inform.ct = "Невірний формат даних\n";
+                inform.hd = "Невірний формат даних\n";
+                inform.ct = "Поле для вводу не може бути пустим та має містити тільки цифрові значення\n";
                 inform.alert();
                 PressureInput.setText("");
                 return;
