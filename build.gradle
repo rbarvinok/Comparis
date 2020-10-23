@@ -4,9 +4,9 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
-group 'ua.euler'
+group 'ua.comparis'
 version '1.0.2'
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -14,7 +14,7 @@ repositories {
 
 task startApp(type: JavaExec) {
     classpath sourceSets.main.runtimeClasspath
-    mainClassName = "ua.euler.Main"
+    mainClassName = "ua.comparis.Main"
     tasks.withType(JavaCompile) {
         options.with {
             encoding = 'UTF-8'

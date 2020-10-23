@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.SettingsController">
+   <children>
+      <Label alignment="CENTER" layoutX="65.0" layoutY="29.0" prefHeight="22.0" prefWidth="400.0" text="Часовий пояс" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="GMTInput" layoutX="139.0" layoutY="70.0" prefHeight="25.0" prefWidth="231.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="141.0" />
+      <Button fx:id="SaveNewGMT" defaultButton="true" layoutX="439.0" layoutY="70.0" mnemonicParsing="false" onAction="#onClickNewPressure" prefHeight="25.0" prefWidth="28.0" styleClass="button1" stylesheets="@../styles/day.css" AnchorPane.rightAnchor="34.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/save.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="reset" layoutX="432.0" layoutY="109.0" mnemonicParsing="false" onAction="#onClickReset" styleClass="button1" stylesheets="@../styles/day.css" text="Reset" textFill="#1465c9" underline="true" AnchorPane.rightAnchor="34.0" />
+      <Label layoutX="65.0" layoutY="145.0" prefHeight="25.0" prefWidth="421.0" text="Для переахунку даних необхідно повторно відкрити файл " textFill="#e80303">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutX="74.0" layoutY="69.0" prefHeight="25.0" prefWidth="62.0" text="GMT + ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

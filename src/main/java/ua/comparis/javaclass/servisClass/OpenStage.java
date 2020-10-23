@@ -1,4 +1,4 @@
-package ua.euler.javaclass.servisClass;
+package ua.comparis.javaclass.servisClass;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class OpenStage {
     public String viewURL;
-    public String imageURL = "/images/HAM.png";
+    public String imageURL = "/images/measuring.png";
     public String title;
 
     public void openStage() throws IOException {

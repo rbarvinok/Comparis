@@ -1,4 +1,4 @@
-package ua.euler.javaclass.servisClass;
+package ua.comparis.javaclass.servisClass;
 
 import javafx.stage.Stage;
 

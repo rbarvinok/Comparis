@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="769.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.euler.controller.Controller">
+<VBox prefHeight="769.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.Controller">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -182,61 +182,15 @@
         </ToolBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="7.0" prefHeight="31.0" prefWidth="735.0" text="Конвертування кватерніонів в кути Ейлера" wrapText="true" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="173.0" AnchorPane.topAnchor="10.0">
+                <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="7.0" prefHeight="31.0" prefWidth="735.0" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="173.0" AnchorPane.topAnchor="10.0">
                     <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
                 <AnchorPane layoutX="19.0" layoutY="38.0" prefHeight="636.0" prefWidth="916.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
                     <children>
-                        <ImageView fx:id="imgView" fitHeight="227.0" fitWidth="142.0" layoutX="770.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
-                     <image>
-                        <Image url="@../images/HAM.png" />
-                     </image></ImageView>
-                  <TextArea fx:id="outputText" editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="749.0" promptText="Відкрийте файл ....." wrapText="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="14.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font></TextArea>
+                  <TextArea fx:id="outputText" editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="1089.0" promptText="Відкрийте файл ....." wrapText="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0" />
                   <ProgressIndicator fx:id="progressIndicator" disable="true" layoutX="357.0" layoutY="210.0" prefHeight="107.0" prefWidth="100.0" visible="false" AnchorPane.bottomAnchor="246.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="459.0" AnchorPane.topAnchor="210.0" />
-                  <Label fx:id="labelHamModel" alignment="CENTER" layoutX="774.0" layoutY="238.0" prefHeight="35.0" prefWidth="142.0" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="238.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                  <Label fx:id="labelHamNumber" alignment="CENTER" layoutX="769.0" layoutY="280.0" prefHeight="35.0" prefWidth="142.0" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="280.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelFileName" alignment="CENTER" layoutX="763.0" layoutY="328.0" prefHeight="54.0" prefWidth="142.0" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="254.0" AnchorPane.rightAnchor="5.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelFileData" alignment="CENTER" layoutX="769.0" layoutY="382.0" prefHeight="54.0" prefWidth="142.0" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="5.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelFileTime" alignment="CENTER" layoutX="769.0" layoutY="434.0" prefHeight="42.0" prefWidth="142.0" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="5.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelAllTime" alignment="CENTER" layoutX="769.0" layoutY="476.0" prefHeight="80.0" prefWidth="142.0" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="5.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LabelCapPress" alignment="CENTER" layoutX="769.0" layoutY="575.0" prefHeight="31.0" prefWidth="142.0" AnchorPane.bottomAnchor="33.0" AnchorPane.rightAnchor="5.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelPress" alignment="CENTER" contentDisplay="CENTER" layoutX="769.0" layoutY="593.0" prefHeight="24.0" prefWidth="142.0" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="3.0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
                     </children>
                 </AnchorPane>
             </children>

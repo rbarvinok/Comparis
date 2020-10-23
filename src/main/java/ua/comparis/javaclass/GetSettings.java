@@ -1,13 +1,13 @@
-package ua.euler.javaclass;
+package ua.comparis.javaclass;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static ua.euler.controller.Controller.pressureNull;
+import static ua.comparis.controller.Controller.localZone;
 
 public class GetSettings {
-    public void getPressureNull() throws IOException {
+    public void getGMT() throws IOException {
 
         FileReader fileReader1 = new FileReader("settings.txt");
         BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
@@ -17,7 +17,7 @@ public class GetSettings {
         while ((line1 = bufferedReader1.readLine()) != null) {
 
             if (lineNumber1 == 0) {
-                pressureNull = Double.parseDouble(line1.split("=")[1]); 
+                localZone = (line1.split("=")[1]);
             }
         }
         fileReader1.close();

@@ -1,4 +1,4 @@
-package ua.euler;
+package ua.comparis;
 
 
 import javafx.application.Application;
@@ -8,17 +8,18 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import static ua.euler.controller.Controller.openFile;
+import static ua.comparis.controller.Controller.openFile;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/sample.fxml"));
-        primaryStage.getIcons().add(new Image(getClass().getResource("/images/HAM.png").toExternalForm()));
-        primaryStage.setTitle("Euler Converter  " + openFile);
+        primaryStage.getIcons().add(new Image(getClass().getResource("/images/measuring.png").toExternalForm()));
+        primaryStage.setTitle("Comparis  " + openFile);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.show();
 
     }

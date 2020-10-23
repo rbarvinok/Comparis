@@ -1,4 +1,4 @@
-package ua.euler.controller;
+package ua.comparis.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
