@@ -12,7 +12,7 @@
                 <Menu mnemonicParsing="false" text="Файл">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickNew" text="Новий" />
-                        <MenuItem mnemonicParsing="false" onAction="#onClickOpenFile" text="Відкрити" />
+                        <MenuItem mnemonicParsing="false" onAction="#onClickOpenOGZ84" text="Відкрити" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickSave" text="Зберегти" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickCancelBtn" text="Вийти" />
@@ -21,7 +21,7 @@
                 <Menu mnemonicParsing="false" text="Інструменти">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickCalculate" text="Розрахувати" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClickVelocity" text="Верикальна швидкість" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickVelocity" text="Відкрити GoogleEarthPro" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickChart" text="Графік" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickOpenFileInDesktop" text="Перегляд файлу" />
@@ -29,7 +29,7 @@
                 </Menu>
             <Menu mnemonicParsing="false" text="Налаштування">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onClickPressureSettings" text="Атмосферний тиск" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickPressureSettings" text="Часовий пояс" />
                </items>
             </Menu>
                 <Menu mnemonicParsing="false" text="Допомога">
@@ -55,18 +55,6 @@
                   <Tooltip text="Новий бланк" />
                </tooltip>
             </Button>
-            <Button id="b" mnemonicParsing="false" onAction="#onClickOpenFile" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/open.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Відкрити файл" />
-               </tooltip>
-            </Button>
             <Button fx:id="tSave" mnemonicParsing="false" onAction="#onClickSave" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                <tooltip>
                   <Tooltip text="Зберегти в файл" />
@@ -78,6 +66,31 @@
                      </image>
                   </ImageView>
                </graphic>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
+            <Button id="b" mnemonicParsing="false" onAction="#onClickOpenOGZ84" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Geo%20ico/kisspng-computer-icons-map-clip-art-location-icon-5abd612579ef60.6844395915223606134995.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Відкрити файл OGZ WGS-84" />
+               </tooltip>
+            </Button>
+            <Button id="b" layoutX="50.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickOpenDMStoDD" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Geo%20ico/03.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Відкрити файл для перетворення градусів, мінут, секунд в градуси" />
+               </tooltip>
             </Button>
             <Separator layoutX="211.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
                <tooltip>
@@ -96,18 +109,6 @@
                   </ImageView>
                </graphic>
             </Button>
-                <Button fx:id="tVel" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickVelocity" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-                    <tooltip>
-                        <Tooltip text="Вертикальна швидкість" />
-                    </tooltip>
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/downV.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
             <Button fx:id="tChart" layoutX="140.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickChart" prefHeight="25.0" prefWidth="26.0" styleClass="button1" stylesheets="@../styles/day.css">
                <tooltip>
                   <Tooltip text="Відобразити графік" />
@@ -120,6 +121,18 @@
                   </ImageView>
                </graphic>
             </Button>
+                <Button fx:id="tVel" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickVelocity" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <tooltip>
+                        <Tooltip text="Відкрити GoogleEarthPro" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/globe.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
                 <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
                <tooltip>
                         <Tooltip text="Зактити програму" />
@@ -150,7 +163,7 @@
                         </ImageView>
                     </graphic>
                     <tooltip>
-                        <Tooltip text="Веедення значення наземного тиску" />
+                        <Tooltip text="Веедення часового поясу" />
                     </tooltip>
                 </Button>
 

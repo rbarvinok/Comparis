@@ -12,6 +12,7 @@ public class OpenStage {
     public String viewURL;
     public String imageURL = "/images/measuring.png";
     public String title;
+    public boolean maximized = false;
 
     public void openStage() throws IOException {
 
@@ -21,6 +22,7 @@ public class OpenStage {
         stage.setTitle(title);
         stage.getIcons().add(new Image(getClass().getResourceAsStream(imageURL)));
         stage.setScene(new Scene(root));
+        stage.setMaximized(maximized);
         stage.show();
     }
 

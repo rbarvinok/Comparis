@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.chartController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <LineChart fx:id="lineChart" alternativeRowFillVisible="false" axisSortingPolicy="NONE" createSymbols="false" horizontalZeroLineVisible="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="648.0" prefWidth="890.0" style="-fx-border-color: #0d0d0d;" title="Графік GPS" verticalZeroLineVisible="false">
+              <xAxis>
+                <NumberAxis animated="false" forceZeroInRange="false" label="Широта, град" minorTickCount="1" side="BOTTOM" tickLabelGap="1.0" tickUnit="3.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </NumberAxis>
+              </xAxis>
+              <yAxis>
+                <NumberAxis forceZeroInRange="false" label="Довгота, град" lowerBound="31.2" side="LEFT" tickUnit="0.1" upperBound="31.4" />
+              </yAxis>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </LineChart>
+            <LineChart fx:id="lineChartAlt" axisSortingPolicy="NONE" createSymbols="false" horizontalZeroLineVisible="false" prefHeight="491.0" prefWidth="890.0" style="-fx-border-color: #0d0d0d;" title="Висота">
+              <xAxis>
+                <CategoryAxis label="Час" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="Висота, м" side="LEFT" />
+              </yAxis>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </LineChart>
+         </children>
+      </VBox>
+
+   </children>
+</AnchorPane>

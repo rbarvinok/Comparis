@@ -19,7 +19,7 @@ public class Main extends Application {
         primaryStage.setTitle("Comparis  " + openFile);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setMaximized(true);
+        //primaryStage.setMaximized(true);
         primaryStage.show();
 
     }

@@ -1,8 +1,8 @@
-package ua.comparis.javaclass;
+package ua.comparis.javaclass.geo;
 
 import lombok.experimental.UtilityClass;
-import ua.comparis.javaclass.domain.Rezult;
-import ua.comparis.javaclass.domain.Source;
+import ua.comparis.javaclass.domain.Ogz84;
+import ua.comparis.javaclass.domain.SourceOGZ84;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,8 +12,8 @@ import static java.lang.StrictMath.*;
 @UtilityClass
 public class OgzWGS84 {
 
-    public static Rezult rezults(Source source) {
-        Rezult rezult = new Rezult();
+    public static Ogz84 rezults(SourceOGZ84 source) {
+        Ogz84 rezultOGZ84 = new Ogz84();
 
         double dist;
         double dist3D;
@@ -21,12 +21,12 @@ public class OgzWGS84 {
         double ang2;
 
 
-        double lat1 = source.getLatitude1() * PI / 180;
-        double long1 = source.getLongitude1() * PI / 180;
-        double lat2 = source.getLatitude2() * PI / 180;
-        double long2 = source.getLongitude2() * PI / 180;
-        double alt1 = source.getAltitude1();
-        double alt2 = source.getAltitude2();
+        double lat1 = Double.parseDouble(source.getLatitude1()) * PI / 180;
+        double long1 = Double.parseDouble(source.getLongitude1()) * PI / 180;
+        double lat2 = Double.parseDouble(source.getLatitude2()) * PI / 180;
+        double long2 = Double.parseDouble(source.getLongitude2()) * PI / 180;
+        double alt1 = Double.parseDouble(source.getAltitude1());
+        double alt2 = Double.parseDouble(source.getAltitude2());
 
         double a = 6378137; //Радиус на экваторе WGS84
         double f = 1 / 298.257223563; //Сжатие WGS84
@@ -82,24 +82,24 @@ public class OgzWGS84 {
 
         ang2 = (atan(cosU1 * siny / (-sinU1 * cosU2 - cosU1 * sinU2 * cosy))) * 180 / PI;
 
-        rezult.setLocalTime1(source.getLocalTime1());
-        rezult.setLatitude1(source.getLatitude1());
-        rezult.setLongitude1(source.getLongitude1());
-        rezult.setAltitude1(source.getAltitude1());
+        rezultOGZ84.setLocalTime1(source.getLocalTime1());
+        rezultOGZ84.setLatitude1(source.getLatitude1());
+        rezultOGZ84.setLongitude1(source.getLongitude1());
+        rezultOGZ84.setAltitude1(source.getAltitude1());
 
-        rezult.setLocalTime2(source.getLocalTime2());
-        rezult.setLatitude2(source.getLatitude2());
-        rezult.setLongitude2(source.getLongitude2());
-        rezult.setAltitude2(source.getAltitude2());
+        rezultOGZ84.setLocalTime2(source.getLocalTime2());
+        rezultOGZ84.setLatitude2(source.getLatitude2());
+        rezultOGZ84.setLongitude2(source.getLongitude2());
+        rezultOGZ84.setAltitude2(source.getAltitude2());
 
-        rezult.setDistance2D(rint(dist * 1000) / 1000);
-        rezult.setDistance3D(rint(dist3D * 1000) / 1000);
-        rezult.setAngle(rint(ang1 * 100) / 100);
+        rezultOGZ84.setDistance2D(rint(dist * 1000) / 1000);
+        rezultOGZ84.setDistance3D(rint(dist3D * 1000) / 1000);
+        rezultOGZ84.setAngle(rint(ang1 * 100) / 100);
 
-        return rezult;
+        return rezultOGZ84;
     }
 
-    public static List<Rezult> rezultBulk(List<Source> sources) {
+    public static List<Ogz84> rezultOGZ84Bulk(List<SourceOGZ84> sources) {
         return sources.stream().map(OgzWGS84::rezults).collect(Collectors.toList());
     }
 }
