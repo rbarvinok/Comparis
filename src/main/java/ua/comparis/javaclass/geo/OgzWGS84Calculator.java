@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import static java.lang.StrictMath.*;
 
 @UtilityClass
-public class OgzWGS84 {
+public class OgzWGS84Calculator {
 
     public static Ogz84 rezults(SourceOGZ84 source) {
         Ogz84 rezultOGZ84 = new Ogz84();
@@ -100,7 +100,7 @@ public class OgzWGS84 {
     }
 
     public static List<Ogz84> rezultOGZ84Bulk(List<SourceOGZ84> sources) {
-        return sources.stream().map(OgzWGS84::rezults).collect(Collectors.toList());
+        return sources.stream().map(OgzWGS84Calculator::rezults).collect(Collectors.toList());
     }
 }
 

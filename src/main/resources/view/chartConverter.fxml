@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="756.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.ChartConverterController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <LineChart fx:id="lineChart" alternativeColumnFillVisible="true" axisSortingPolicy="NONE" createSymbols="false" horizontalZeroLineVisible="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="726.0" prefWidth="886.0" style="-fx-border-color: #0d0d0d;" title="Графік GPS" verticalZeroLineVisible="false">
+              <xAxis>
+                <NumberAxis animated="false" forceZeroInRange="false" label="Широта, град" minorTickCount="1" side="BOTTOM" tickLabelGap="1.0" tickUnit="3.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </NumberAxis>
+              </xAxis>
+              <yAxis>
+                <NumberAxis forceZeroInRange="false" label="Довгота, град" lowerBound="31.2" side="LEFT" tickUnit="0.1" upperBound="31.4" />
+              </yAxis>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </LineChart>
+         </children>
+      </VBox>
+      <Button fx:id="scatterChartButton" layoutX="711.0" layoutY="710.0" mnemonicParsing="false" onAction="#onClickScatterChart" prefHeight="25.0" prefWidth="173.0" text="У вигляді точок" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="15.0" />
+
+   </children>
+</AnchorPane>

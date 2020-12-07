@@ -4,17 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class DMStoDD {
-    private String latD;
-    private String latM;
-    private String latS;
-    private String longD;
-    private String longM;
-    private String longS;
-
+public class DDtoDMS {
     private double latitudeDD;
     private double longitudeDD;
     private double altitudeDD;
+
+    private int latD;
+    private int latM;
+    private double latS;
+    private int longD;
+    private int longM;
+    private double longS;
+
 
     @AllArgsConstructor
     @Data
@@ -27,15 +28,15 @@ public class DMStoDD {
     @AllArgsConstructor
     @Data
     public static class DMS {
-        private double latD;
-        private double latM;
+        private int latD;
+        private int latM;
         private double latS;
-        private double longD;
-        private double longM;
+        private int longD;
+        private int longM;
         private double longS;
     }
     @Override
     public String toString() {
-        return latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\",          " + latitudeDD + ",    " + longitudeDD + ",        " + altitudeDD + "\n";
+        return latitudeDD + ",    " + longitudeDD + ",        " + latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\",          " + altitudeDD + "\n";
     }
 }

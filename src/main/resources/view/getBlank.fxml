@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.GetBlankController">
+   <children>
+      <Label alignment="CENTER" layoutX="45.0" layoutY="14.0" prefHeight="22.0" prefWidth="400.0" text="Отримати бланк для розрахунків" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="SaveNewGMT" defaultButton="true" layoutX="439.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" styleClass="button1" stylesheets="@../styles/day.css" AnchorPane.rightAnchor="34.0" />
+      <Button fx:id="reset" alignment="TOP_LEFT" layoutX="51.0" layoutY="45.0" mnemonicParsing="false" onAction="#getCompare" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Порівняння координат" textFill="#1465c9" underline="true" AnchorPane.rightAnchor="148.0" />
+      <Label layoutX="15.0" layoutY="204.0" prefHeight="73.0" prefWidth="475.0" text="   Бланк для розрахунків надається з атрибутом 'Тільки для читання', тому необхідно зберегти обраний бланк під іншим ім'ям. Для цього обрати пункт 'Сохранить как...',  або натиснути клавішу F12, обрати розміщення та ім'я файлу.    Тип файлу - 'CSV UTF-8 (разделитель - запятая)'" wrapText="true" />
+      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="95.0" mnemonicParsing="false" onAction="#getDMStoDD" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Конвертер градуси, мінути, секунди в градуси" textFill="#1465c9" underline="true" />
+      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="70.0" mnemonicParsing="false" onAction="#getOGZ" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Обернена геодезична задача" textFill="#1465c9" underline="true" />
+      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="120.0" mnemonicParsing="false" onAction="#getDDtoDMS" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Конвертер градуси в градуси, мінути, секунди " textFill="#1465c9" underline="true" />
+      <ImageView fitHeight="233.0" fitWidth="363.0" layoutX="71.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Geo_ico/SaveAs.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="18.0" layoutY="530.0" prefHeight="34.0" prefWidth="475.0" text="Структуру файлу змінювати НЕ МОЖНА!" textFill="#e80303" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="15.0" layoutY="277.0" prefHeight="25.0" prefWidth="475.0" text="Тип файлу - 'CSV UTF-8 (разделитель - запятая)'" underline="true" wrapText="true" />
+   </children>
+</AnchorPane>

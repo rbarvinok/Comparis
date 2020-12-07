@@ -1,4 +1,4 @@
-package ua.comparis.javaclass;
+package ua.comparis.javaclass.servisClass;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

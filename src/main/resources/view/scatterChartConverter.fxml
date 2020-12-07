@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="756.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.ScatterChartConverterController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScatterChart fx:id="scatterChart" prefHeight="697.0" prefWidth="896.0">
+              <xAxis>
+                <NumberAxis forceZeroInRange="false" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis forceZeroInRange="false" side="LEFT" />
+              </yAxis>
+            </ScatterChart>
+         </children>
+      </VBox>
+      <Button fx:id="lineChartButton" defaultButton="true" layoutX="711.0" layoutY="710.0" mnemonicParsing="false" onAction="#onClickLineChart" prefHeight="25.0" prefWidth="173.0" text="У вигляді лінійного графіка" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="15.0" />
+
+   </children>
+</AnchorPane>

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static ua.comparis.controller.Controller.openFile;
 
 
-public class chartController implements Initializable {
+public class ChartComparisController implements Initializable {
 
     @FXML
     public LineChart lineChart, lineChartAlt;
@@ -26,17 +26,10 @@ public class chartController implements Initializable {
         NumberAxis x = new NumberAxis();
         x.setAutoRanging(false);
         x.setForceZeroInRange(false);
-//        x.setLowerBound(51);
-//        x.setUpperBound(52);
-//        x.setTickUnit(0.1);
 
         NumberAxis y = new NumberAxis();
         y.setAutoRanging(false);
         y.setForceZeroInRange(false);
-//        y.setLowerBound(31);
-//        y.setUpperBound(32);
-//        y.setTickUnit(0.1);
-
 
         LineChart<Number, Number> lccGPS = new LineChart<Number, Number>(x, y);
         lccGPS.setTitle("Графік GPS " + openFile);
@@ -48,9 +41,9 @@ public class chartController implements Initializable {
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Набір даних 2");
 
-//................  1
+        //............  1
         List<Ogz84.Latitude1> gpsLatitude1 = Controller.rezultsOGZ84.stream().map(gpsTimes -> {
-            return new Ogz84.Latitude1(Double.parseDouble(gpsTimes.getLongitude1()), Double.parseDouble(gpsTimes.getLatitude1()));
+            return new Ogz84.Latitude1(Double.parseDouble(gpsTimes.getLatitude1()), Double.parseDouble(gpsTimes.getLongitude1()));
         }).collect(Collectors.toList());
 
         ObservableList<XYChart.Data> gps1 = FXCollections.observableArrayList();
@@ -63,7 +56,7 @@ public class chartController implements Initializable {
 
         //..............  2
         List<Ogz84.Latitude2> gpsLatitude2 = Controller.rezultsOGZ84.stream().map(gpsTimes -> {
-            return new Ogz84.Latitude2(Double.parseDouble(gpsTimes.getLongitude2()), Double.parseDouble(gpsTimes.getLatitude2()));
+            return new Ogz84.Latitude2(Double.parseDouble(gpsTimes.getLatitude2()), Double.parseDouble(gpsTimes.getLongitude2()));
         }).collect(Collectors.toList());
 
         ObservableList<XYChart.Data> gps2 = FXCollections.observableArrayList();
@@ -76,23 +69,10 @@ public class chartController implements Initializable {
         lineChart.getData().addAll(series1, series2);
 
 
-
-
         ///////Висота
 
         XYChart.Series seriesAlt1 = new XYChart.Series();
         XYChart.Series seriesAlt2 = new XYChart.Series();
-
-//        BarChart<String, Number> chart = new BarChart<>(new CategoryAxis(), new NumberAxis());
-
-//        final XYChart.Series<String, Number> seriesAlt = new XYChart.Series<>();
-//        chart.getData().addAll(seriesAlt);
-
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-//        Date date = new Date();
-//        for (int i = 0; i <= 10; i += 1) {
-//            date.setTime(date.getTime() + i * 11111);
-//            series1.getData().add(new XYChart.Data(dateFormat.format(date), Math.random() * 500));
 
         CategoryAxis x1 = new CategoryAxis();
         NumberAxis y1 = new NumberAxis();
@@ -125,9 +105,6 @@ public class chartController implements Initializable {
         }
 
         seriesAlt2.setData(Alt2);
-
-
-
 
         lineChartAlt.getData().addAll(seriesAlt1, seriesAlt2);
 
