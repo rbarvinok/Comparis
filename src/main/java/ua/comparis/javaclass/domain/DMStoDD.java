@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Data
 public class DMStoDD {
-    private String latD;
-    private String latM;
-    private String latS;
-    private String longD;
-    private String longM;
-    private String longS;
+    private int latD;
+    private int latM;
+    private double latS;
+    private int longD;
+    private int longM;
+    private double longS;
 
     private double latitudeDD;
     private double longitudeDD;

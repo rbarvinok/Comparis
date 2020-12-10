@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -12,7 +14,7 @@
                 <Menu mnemonicParsing="false" text="Файл">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickNew" text="Новий" />
-                        <MenuItem mnemonicParsing="false" onAction="#onClickOpenOGZ84" text="Відкрити" />
+                        <MenuItem mnemonicParsing="false" onAction="#openDataOGZ84" text="Відкрити" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickSave" text="Зберегти" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickCancelBtn" text="Вийти" />
@@ -68,51 +70,28 @@
                </graphic>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
-            <Button id="b" mnemonicParsing="false" onAction="#onClickOpenOGZ84" prefHeight="36.0" prefWidth="71.0" styleClass="button1" stylesheets="@../styles/day.css" text="ОГЗ">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Geo_ico/iconОГЗ.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Відкрити файл OGZ WGS-84" />
-               </tooltip>
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button id="b" layoutX="50.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickOpenDMStoDD" prefHeight="31.0" prefWidth="118.0" styleClass="button1" stylesheets="@../styles/day.css" text="ГМС в градуси">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Geo_ico/unnamed.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Відкрити файл для перетворення градусів, мінут, секунд в градуси" />
-               </tooltip>
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button id="b" layoutX="166.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickOpenDDtoDMS" prefHeight="31.0" prefWidth="118.0" styleClass="button1" stylesheets="@../styles/day.css" text="Градуси в ГМС ">
-               <graphic>
-                  <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Geo_ico/images3.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Відкрити файл для перетворення градусів, мінут, секунд в градуси" />
-               </tooltip>
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
+            <ComboBox fx:id="choiceCoordinateConverter" layoutX="100.0" layoutY="13.0" onAction="#choiceCoordinateConverter" onMouseClicked="#choiceCoordinateConverter" prefHeight="25.0" prefWidth="165.0" styleClass="button1" stylesheets="@../styles/day.css" value="Конвертор координат">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Конвертор координат" />
+                     <String fx:value="ГМС в Градуси" />
+                     <String fx:value="Градуси в ГМС" />
+                     <String fx:value="WGS-84 в СК-42 (градуси)" />
+                     <String fx:value="WGS-84 в СК-42 (ГМС)" />
+                     <String fx:value="СК-42 в WGS-84" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+
+            <ComboBox fx:id="choiceGeoProblem" onAction="#choiceGeoProblem" onMouseClicked="#choiceGeoProblem" prefHeight="25.0" prefWidth="141.0" promptText="Геодезичні задачі" styleClass="button1" stylesheets="@../styles/day.css" value="Геодезичні задачі">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Геодезичні задачі" />
+                        <String fx:value="Порівняння координат" />
+                        <String fx:value="Обернена геодезична задача (градуси)" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
             <Separator layoutX="211.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
                <tooltip>
                   <Tooltip text="Зактити програму" />
@@ -236,7 +215,7 @@
                 <AnchorPane layoutX="19.0" layoutY="38.0" prefHeight="636.0" prefWidth="916.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
                     <children>
                   <TextArea fx:id="outputText" editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="1089.0" promptText="Відкрийте файл ....." wrapText="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0" />
-                  <ProgressIndicator fx:id="progressIndicator" disable="true" layoutX="357.0" layoutY="210.0" prefHeight="107.0" prefWidth="100.0" visible="false" AnchorPane.bottomAnchor="246.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="459.0" AnchorPane.topAnchor="210.0" />
+                  <ProgressIndicator fx:id="progressIndicator" layoutX="452.0" layoutY="280.0" prefHeight="72.0" prefWidth="84.0" visible="false" AnchorPane.bottomAnchor="284.0" AnchorPane.leftAnchor="452.0" AnchorPane.rightAnchor="579.0" AnchorPane.topAnchor="280.0" />
                     </children>
                 </AnchorPane>
             </children>

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class SourceDDtoDMS {
+public class SourceDD {
 
     private double latD;
     private double longD;

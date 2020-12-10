@@ -30,4 +30,13 @@ public class GetBlankController {
     }
 
 
+    public void getWGS84toCK42(ActionEvent actionEvent) throws IOException {
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(urlComparis + "/blank/Бланк Градуси в ГМС.csv"));
+    }
+
+    public void getCK42toWGS84(ActionEvent actionEvent) throws IOException {
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(urlComparis + "/blank/Бланк Градуси в ГМС.csv"));
+    }
 }

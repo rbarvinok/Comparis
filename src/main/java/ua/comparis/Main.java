@@ -12,10 +12,12 @@ import static ua.comparis.controller.Controller.openFile;
 
 public class Main extends Application {
 
+    public static String icoImage = "/images/measuring.png";
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/sample.fxml"));
-        primaryStage.getIcons().add(new Image(getClass().getResource("/images/measuring.png").toExternalForm()));
+        primaryStage.getIcons().add(new Image(getClass().getResource(icoImage).toExternalForm()));
         primaryStage.setTitle("Comparis  " + openFile);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

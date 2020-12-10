@@ -6,12 +6,12 @@ import java.io.File;
 
 public class FileChooserRun {
 
-    AlertAndInform pb = new AlertAndInform();
+    AlertAndInform inform = new AlertAndInform();
     public static File selectedOpenFile;
 
     public void openFileChooser() {
         javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
-        fileChooser.setTitle("EulerConverter. Відкриття файлу");
+        fileChooser.setTitle("Comparis. Відкриття файлу");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().addAll(
                 new javafx.stage.FileChooser.ExtensionFilter("*.csv", "*.csv"),
@@ -22,10 +22,9 @@ public class FileChooserRun {
             if (selectedFile != null) {
                 selectedOpenFile = selectedFile;
             } else {
-                pb.hd = "Помилка! ";
-                pb.ct = "Невдалось відкрити файл\n";
-                pb.alert();
-                return;
+                inform.hd = "Помилка! ";
+                inform.ct = "Не вдалось відкрити файл\n";
+                inform.alert();
             }
         } catch (Exception e) {
             e.printStackTrace();
