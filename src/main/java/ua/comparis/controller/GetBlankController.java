@@ -19,24 +19,23 @@ public class GetBlankController {
         desktop.open(new File(urlComparis + "/blank/Бланк ОГЗ.csv"));
     }
 
+    public void getPGZ(ActionEvent actionEvent) throws IOException {
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File(urlComparis + "/blank/Бланк ПГЗ.csv"));
+    }
+
     public void getDMStoDD(ActionEvent actionEvent) throws IOException {
         Desktop desktop = Desktop.getDesktop();
-        desktop.open(new File(urlComparis + "/blank/Бланк ГМС в Градуси.csv"));
+        desktop.open(new File(urlComparis + "/blank/Бланк ГМС.csv"));
     }
 
     public void getDDtoDMS(ActionEvent actionEvent) throws IOException {
         Desktop desktop = Desktop.getDesktop();
-        desktop.open(new File(urlComparis + "/blank/Бланк Градуси в ГМС.csv"));
-    }
-
-
-    public void getWGS84toCK42(ActionEvent actionEvent) throws IOException {
-        Desktop desktop = Desktop.getDesktop();
-        desktop.open(new File(urlComparis + "/blank/Бланк Градуси в ГМС.csv"));
+        desktop.open(new File(urlComparis + "/blank/Бланк Градуси.csv"));
     }
 
     public void getCK42toWGS84(ActionEvent actionEvent) throws IOException {
         Desktop desktop = Desktop.getDesktop();
-        desktop.open(new File(urlComparis + "/blank/Бланк Градуси в ГМС.csv"));
+        desktop.open(new File(urlComparis + "/blank/Бланк CK-42.csv"));
     }
 }

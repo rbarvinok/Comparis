@@ -23,104 +23,140 @@
                 <Menu mnemonicParsing="false" text="Інструменти">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickCalculate" text="Розрахувати" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClickGoogleEarth" text="Відкрити GoogleEarthPro" />
+                        <MenuItem mnemonicParsing="false" onAction="#onClickGoogleEarth" text="Відкрити GoogleEarthPro" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickChart" text="Графік" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickOpenFileInDesktop" text="Перегляд файлу" />
                     </items>
                 </Menu>
-            <Menu mnemonicParsing="false" text="Налаштування">
+            <Menu mnemonicParsing="false" text="Конвертер координат">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onClickLocalZone" text="Часовий пояс" />
+                  <Menu mnemonicParsing="false" text="WGS-84">
+                    <items>
+                        <Menu mnemonicParsing="false" onAction="#openDataDMStoDD" text="Градуси, мінути, секунди">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="В градуси" />
+                              <MenuItem mnemonicParsing="false" text="В СК-42" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" onAction="#openDataDDtoDMS" text="Градуси">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="В градуси, мінути, секунди" />
+                            <MenuItem mnemonicParsing="false" text="В СК-42" />
+                          </items>
+                        </Menu>
+                    </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDataCK42toDD" text="CK-42 в WGS-84" />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Геодезичні задачі">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openDataCompare" text="Порівняння координат" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDataOGZWGS84" text="Обернена геодезична задача" />
+                  <MenuItem mnemonicParsing="false" text="Пряма геодезична задача" />
+               </items>
+            </Menu>
+                <Menu mnemonicParsing="false" text="Налаштування">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onClickLocalZone" text="Часовий пояс" />
+                    </items>
+                </Menu>
                 <Menu mnemonicParsing="false" text="Допомога">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickMenuHAM" text="Керівництво НАМ" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClickDovBtn" text="Керівництво оператора ПЗ" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClick_menuAbout" text="Про програму" />
+                        <MenuItem mnemonicParsing="false" onAction="#onClickDovBtn" text="Керівництво оператора ПЗ" />
+                        <MenuItem mnemonicParsing="false" onAction="#onClick_menuAbout" text="Про програму" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
         <ToolBar prefHeight="35.0" prefWidth="665.0">
             <items>
-            <Button fx:id="tNew" lineSpacing="1.0" mnemonicParsing="false" onAction="#onClickNew" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/new.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Новий бланк" />
-               </tooltip>
-            </Button>
-            <Button fx:id="tSave" mnemonicParsing="false" onAction="#onClickSave" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <tooltip>
-                  <Tooltip text="Зберегти в файл" />
-               </tooltip>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/save.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
-            <ComboBox fx:id="choiceCoordinateConverter" layoutX="100.0" layoutY="13.0" onAction="#choiceCoordinateConverter" onMouseClicked="#choiceCoordinateConverter" prefHeight="25.0" prefWidth="165.0" styleClass="button1" stylesheets="@../styles/day.css" value="Конвертор координат">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="Конвертор координат" />
-                     <String fx:value="ГМС в Градуси" />
-                     <String fx:value="Градуси в ГМС" />
-                     <String fx:value="WGS-84 в СК-42 (градуси)" />
-                     <String fx:value="WGS-84 в СК-42 (ГМС)" />
-                     <String fx:value="СК-42 в WGS-84" />
-                  </FXCollections>
-               </items>
-            </ComboBox>
+                <Button fx:id="tNew" lineSpacing="1.0" mnemonicParsing="false" onAction="#onClickNew" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/new.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Новий бланк" />
+                    </tooltip>
+                </Button>
+                <Button fx:id="tSave" mnemonicParsing="false" onAction="#onClickSave" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <tooltip>
+                        <Tooltip text="Зберегти в файл" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/save.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
+                <ComboBox fx:id="choiceCoordinateConverter" layoutX="100.0" layoutY="13.0" onAction="#choiceCoordinateConverter" onMouseClicked="#choiceCoordinateConverter" prefHeight="25.0" prefWidth="165.0" styleClass="button1" stylesheets="@../styles/day.css" value="Конвертор координат">
+                    <tooltip>
+                        <Tooltip text="Конвертор координат" />
+                    </tooltip>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Конвертор координат" />
+                            <String fx:value="ГМС в Градуси" />
+                            <String fx:value="Градуси в ГМС" />
+                            <String fx:value="WGS-84 в СК-42 (градуси)" />
+                            <String fx:value="WGS-84 в СК-42 (ГМС)" />
+                            <String fx:value="СК-42 в WGS-84" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-            <ComboBox fx:id="choiceGeoProblem" onAction="#choiceGeoProblem" onMouseClicked="#choiceGeoProblem" prefHeight="25.0" prefWidth="141.0" promptText="Геодезичні задачі" styleClass="button1" stylesheets="@../styles/day.css" value="Геодезичні задачі">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Геодезичні задачі" />
-                        <String fx:value="Порівняння координат" />
-                        <String fx:value="Обернена геодезична задача (градуси)" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-            <Separator layoutX="211.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
-               <tooltip>
-                  <Tooltip text="Зактити програму" />
-               </tooltip>
-            </Separator>
-            <Button fx:id="tCalc" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickCalculate" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <tooltip>
-                  <Tooltip text="Розрахувати" />
-               </tooltip>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/calculator.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="tChart" layoutX="140.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickChart" prefHeight="25.0" prefWidth="26.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <tooltip>
-                  <Tooltip text="Відобразити графік" />
-               </tooltip>
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Chart.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+                <ComboBox fx:id="choiceGeoProblem" onAction="#choiceGeoProblem" onMouseClicked="#choiceGeoProblem" prefHeight="25.0" prefWidth="141.0" promptText="Геодезичні задачі" styleClass="button1" stylesheets="@../styles/day.css" value="Геодезичні задачі">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Геодезичні задачі" />
+                            <String fx:value="Порівняння координат" />
+                            <String fx:value="Обернена геодезична задача (градуси)" />
+                            <String fx:value="Пряма геодезична задача (градуси)" />
+                        </FXCollections>
+                    </items>
+                    <tooltip>
+                        <Tooltip text="Геодезичні задачі" />
+                    </tooltip>
+                </ComboBox>
+                <Separator layoutX="211.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
+                    <tooltip>
+                        <Tooltip text="Зактити програму" />
+                    </tooltip>
+                </Separator>
+                <Button fx:id="tCalc" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickCalculate" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <tooltip>
+                        <Tooltip text="Розрахувати" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/calculator.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="tChart" layoutX="140.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickChart" prefHeight="25.0" prefWidth="26.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <tooltip>
+                        <Tooltip text="Відобразити графік" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/Chart.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
                 <Button fx:id="tVel" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickGoogleEarth" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                     <tooltip>
                         <Tooltip text="Відкрити GoogleEarthPro" />
@@ -134,38 +170,39 @@
                     </graphic>
                 </Button>
                 <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
-               <tooltip>
+                    <tooltip>
                         <Tooltip text="Зактити програму" />
-               </tooltip></Separator>
-            <Button layoutX="650.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickGetBlank" prefHeight="18.0" prefWidth="16.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Geo_ico/global-geo.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Отримати бланк" />
-               </tooltip>
-            </Button>
-            <Button id="b" layoutX="50.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickOpenFileInDesktop" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/XLS-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Відкрити файл для перегляду" />
-               </tooltip>
-            </Button>
-            <Separator layoutX="221.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
-               <tooltip>
-                  <Tooltip text="Зактити програму" />
-               </tooltip>
-            </Separator>
+                    </tooltip>
+                </Separator>
+                <Button layoutX="650.0" layoutY="16.0" mnemonicParsing="false" onAction="#onClickGetBlank" prefHeight="18.0" prefWidth="16.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/Geo_ico/global-geo.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Отримати бланк" />
+                    </tooltip>
+                </Button>
+                <Button id="b" layoutX="50.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickOpenFileInDesktop" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/XLS-icon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Відкрити файл для перегляду" />
+                    </tooltip>
+                </Button>
+                <Separator layoutX="221.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
+                    <tooltip>
+                        <Tooltip text="Зактити програму" />
+                    </tooltip>
+                </Separator>
                 <Button id="b" layoutX="50.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickLocalZone" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -180,29 +217,29 @@
                 </Button>
 
                 <Button mnemonicParsing="false" onAction="#onClickDovBtn" prefHeight="18.0" prefWidth="16.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <graphic>
-                      <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/question-mark.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Довідка" />
-               </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/question-mark.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Довідка" />
+                    </tooltip>
                 </Button>
-            <Button id="b" layoutX="231.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickCancelBtn" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons-exit.jpg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Вихід з програми" />
-               </tooltip>
-            </Button>
+                <Button id="b" layoutX="231.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickCancelBtn" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons-exit.jpg" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Вихід з програми" />
+                    </tooltip>
+                </Button>
             </items>
         </ToolBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
@@ -214,17 +251,17 @@
                 </Label>
                 <AnchorPane layoutX="19.0" layoutY="38.0" prefHeight="636.0" prefWidth="916.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
                     <children>
-                  <TextArea fx:id="outputText" editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="1089.0" promptText="Відкрийте файл ....." wrapText="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0" />
-                  <ProgressIndicator fx:id="progressIndicator" layoutX="452.0" layoutY="280.0" prefHeight="72.0" prefWidth="84.0" visible="false" AnchorPane.bottomAnchor="284.0" AnchorPane.leftAnchor="452.0" AnchorPane.rightAnchor="579.0" AnchorPane.topAnchor="280.0" />
+                        <TextArea fx:id="outputText" editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="1089.0" promptText="Відкрийте файл ....." wrapText="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0" />
+                        <ProgressIndicator fx:id="progressIndicator" layoutX="452.0" layoutY="280.0" prefHeight="72.0" prefWidth="84.0" visible="false" AnchorPane.bottomAnchor="284.0" AnchorPane.leftAnchor="452.0" AnchorPane.rightAnchor="579.0" AnchorPane.topAnchor="280.0" />
                     </children>
                 </AnchorPane>
             </children>
         </AnchorPane>
-      <AnchorPane>
-         <children>
-            <TextField fx:id="statusBar" editable="false" prefHeight="25.0" prefWidth="934.0" promptText="Очікування вхідних даних" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <TextField fx:id="labelLineCount" editable="false" layoutX="747.0" prefHeight="25.0" prefWidth="185.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-         </children>
-      </AnchorPane>
+        <AnchorPane>
+            <children>
+                <TextField fx:id="statusBar" editable="false" prefHeight="25.0" prefWidth="934.0" promptText="Очікування вхідних даних" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                <TextField fx:id="labelLineCount" editable="false" layoutX="747.0" prefHeight="25.0" prefWidth="185.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            </children>
+        </AnchorPane>
     </children>
 </VBox>

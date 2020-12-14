@@ -51,6 +51,6 @@ public class DMStoCK42 {
 
     @Override
     public String toString() {
-        return latitudeDD + ",    " + longitudeDD + ",        " + latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\"" + ",         " + altitudeDD + ",            " + xCK42 + ",    " + yCK42 + ",    " + hCK42 + "\n";
+        return latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\"" + ",           " + latitudeDD + ",          " + longitudeDD + ",        " + altitudeDD + ",            " + xCK42 + ",    " + yCK42 + ",    " + hCK42 + "\n";
     }
 }

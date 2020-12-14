@@ -26,7 +26,7 @@ public class ScatterChartConverterController implements Initializable {
     public Button lineChartButton;
 
     @Override
-    public void initialize( URL location, ResourceBundle resources ) {
+    public void initialize(URL location, ResourceBundle resources) {
         NumberAxis x = new NumberAxis();
         x.setAutoRanging(false);
         x.setForceZeroInRange(false);
@@ -64,6 +64,14 @@ public class ScatterChartConverterController implements Initializable {
             scatterChart.getData().addAll(seriesCK42);
         }
 
+        if (isCalc == "DMStoCK42") {
+            XYChart.Series seriesDMStoCK42 = new XYChart.Series();
+            seriesDMStoCK42.setName("Координати");
+            getChartDataDMStoCK42();
+            seriesDMStoCK42.setData(gps);
+            scatterChart.getData().addAll(seriesDMStoCK42);
+        }
+
         if (isCalc == "CK42toDD") {
             XYChart.Series seriesWGS = new XYChart.Series();
             seriesWGS.setName("Координати");
@@ -81,10 +89,21 @@ public class ScatterChartConverterController implements Initializable {
             seriesOGZ1.setData(gps1);
             seriesOGZ2.setData(gps2);
             scatterChart.getData().addAll(seriesOGZ1, seriesOGZ2);
+
+        }
+        if (isCalc == "PGZ84") {
+            XYChart.Series seriesPGZ1 = new XYChart.Series();
+            seriesPGZ1.setName("Набір даних 1");
+            XYChart.Series seriesPGZ2 = new XYChart.Series();
+            seriesPGZ2.setName("Набір даних 2");
+            getChartDataPGZ();
+            seriesPGZ1.setData(gps1);
+            seriesPGZ2.setData(gps2);
+            scatterChart.getData().addAll(seriesPGZ1, seriesPGZ2);
         }
     }
 
-    public void onClickLineChart( ActionEvent actionEvent ) throws IOException {
+    public void onClickLineChart(ActionEvent actionEvent) throws IOException {
         os.viewURL = "/view/chartConverter.fxml";
         os.title = "Графік GPS   " + openFile;
         os.maximized = false;

@@ -73,6 +73,14 @@ public class ChartConverterController implements Initializable {
             lineChart.getData().addAll(seriesCK42);
         }
 
+        if (isCalc == "DMStoCK42") {
+            XYChart.Series seriesDMStoCK42 = new XYChart.Series();
+            seriesDMStoCK42.setName("Координати");
+            getChartDataDMStoCK42();
+            seriesDMStoCK42.setData(gps);
+            lineChart.getData().addAll(seriesDMStoCK42);
+        }
+
         if (isCalc == "CK42toDD") {
             XYChart.Series seriesWGS = new XYChart.Series();
             seriesWGS.setName("Координати");
@@ -90,6 +98,17 @@ public class ChartConverterController implements Initializable {
             seriesOGZ1.setData(gps1);
             seriesOGZ2.setData(gps2);
             lineChart.getData().addAll(seriesOGZ1, seriesOGZ2);
+        }
+
+        if (isCalc == "PGZ84") {
+            XYChart.Series seriesPGZ1 = new XYChart.Series();
+            seriesPGZ1.setName("Набір даних 1");
+            XYChart.Series seriesPGZ2 = new XYChart.Series();
+            seriesPGZ2.setName("Набір даних 2");
+            getChartDataPGZ();
+            seriesPGZ1.setData(gps1);
+            seriesPGZ2.setData(gps2);
+            lineChart.getData().addAll(seriesPGZ1, seriesPGZ2);
         }
     }
 
@@ -126,6 +145,17 @@ public class ChartConverterController implements Initializable {
         }
     }
 
+    public static void getChartDataDMStoCK42() {
+        List<DMStoCK42.DD> gpsLatitude = Controller.rezultsDMStoCK42.stream().map(dd -> {
+            return new DMStoCK42.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
+        }).collect(Collectors.toList());
+
+        gps = FXCollections.observableArrayList();
+        for (DMStoCK42.DD latitude : gpsLatitude) {
+            gps.add(new XYChart.Data(latitude.getLatitudeDD(), latitude.getLongitudeDD()));
+        }
+    }
+
     public static void getChartDataCK42toDD() {
         List<CK42toDD.DD> gpsLatitude = Controller.rezultsCK42toDD.stream().map(dd -> {
             return new CK42toDD.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
@@ -155,6 +185,28 @@ public class ChartConverterController implements Initializable {
 
         gps2 = FXCollections.observableArrayList();
         for (Ogz84.Latitude2 latitude : gpsLatitude2) {
+            gps2.add(new XYChart.Data(latitude.getLatitude2(), latitude.getLongitude2()));
+        }
+    }
+
+    public static void getChartDataPGZ() {
+        //............  1
+        List<Pgz84.Latitude1> gpsLatitude1 = Controller.rezultsPGZ84.stream().map(gpsTimes -> {
+            return new Pgz84.Latitude1(gpsTimes.getLatitude1(), gpsTimes.getLongitude1());
+        }).collect(Collectors.toList());
+
+        gps1 = FXCollections.observableArrayList();
+        for (Pgz84.Latitude1 latitude : gpsLatitude1) {
+            gps1.add(new XYChart.Data(latitude.getLatitude1(), latitude.getLongitude1()));
+        }
+
+        //..............  2
+        List<Pgz84.Latitude2> gpsLatitude2 = Controller.rezultsPGZ84.stream().map(gpsTimes -> {
+            return new Pgz84.Latitude2(gpsTimes.getLatitude2(), gpsTimes.getLongitude2());
+        }).collect(Collectors.toList());
+
+        gps2 = FXCollections.observableArrayList();
+        for (Pgz84.Latitude2 latitude : gpsLatitude2) {
             gps2.add(new XYChart.Data(latitude.getLatitude2(), latitude.getLongitude2()));
         }
     }

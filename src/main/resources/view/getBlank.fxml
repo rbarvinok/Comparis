@@ -15,9 +15,9 @@
       <Button fx:id="SaveNewGMT" defaultButton="true" layoutX="439.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" styleClass="button1" stylesheets="@../styles/day.css" AnchorPane.rightAnchor="34.0" />
       <Button fx:id="reset" alignment="TOP_LEFT" layoutX="51.0" layoutY="45.0" mnemonicParsing="false" onAction="#getCompare" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Порівняння координат" textFill="#1465c9" underline="true" AnchorPane.rightAnchor="148.0" />
       <Label layoutX="15.0" layoutY="204.0" prefHeight="73.0" prefWidth="475.0" text="   Бланк для розрахунків надається з атрибутом 'Тільки для читання', тому необхідно зберегти обраний бланк під іншим ім'ям. Для цього обрати пункт 'Сохранить как...',  або натиснути клавішу F12, обрати розміщення та ім'я файлу." wrapText="true" />
-      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="95.0" mnemonicParsing="false" onAction="#getDMStoDD" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Конвертер градуси, мінути, секунди в градуси" textFill="#1465c9" underline="true" />
+      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="120.0" mnemonicParsing="false" onAction="#getDMStoDD" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Бланк градуси, мінути, секунди" textFill="#1465c9" underline="true" />
       <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="70.0" mnemonicParsing="false" onAction="#getOGZ" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Обернена геодезична задача (градуси)" textFill="#1465c9" underline="true" />
-      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="120.0" mnemonicParsing="false" onAction="#getDDtoDMS" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Конвертер градуси в градуси, мінути, секунди " textFill="#1465c9" underline="true" />
+      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="145.0" mnemonicParsing="false" onAction="#getDDtoDMS" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Бланк градуси" textFill="#1465c9" underline="true" />
       <ImageView fitHeight="233.0" fitWidth="363.0" layoutX="71.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Geo_ico/SaveAs.png" />
@@ -28,7 +28,7 @@
             <Font name="System Bold" size="12.0" />
          </font></Label>
       <Label layoutX="15.0" layoutY="277.0" prefHeight="25.0" prefWidth="475.0" text="Тип файлу - 'CSV UTF-8 (разделитель - запятая)'" underline="true" wrapText="true" />
-      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="145.0" mnemonicParsing="false" onAction="#getWGS84toCK42" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Конвертер WGS-84 в СК-42" textFill="#1465c9" underline="true" />
-      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="170.0" mnemonicParsing="false" onAction="#getCK42toWGS84" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Конвертер СК-42 в WGS-84" textFill="#1465c9" underline="true" />
+      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="170.0" mnemonicParsing="false" onAction="#getCK42toWGS84" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Бланк СК-42" textFill="#1465c9" underline="true" />
+      <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="95.0" mnemonicParsing="false" onAction="#getPGZ" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Пряма геодезична задача (градуси)" textFill="#1465c9" underline="true" />
    </children>
 </AnchorPane>

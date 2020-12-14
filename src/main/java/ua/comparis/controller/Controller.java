@@ -32,6 +32,7 @@ import static ua.comparis.javaclass.geo.ConverterCoordinateSystem.*;
 import static ua.comparis.javaclass.geo.DDtoDMSConverter.rezultDDtoDMSBulk;
 import static ua.comparis.javaclass.geo.DMStoDDConverter.rezultDMStoDDBulk;
 import static ua.comparis.javaclass.geo.OgzWGS84Calculator.rezultOGZ84Bulk;
+import static ua.comparis.javaclass.geo.PgzWGS84Calculator.rezultPGZ84Bulk;
 import static ua.comparis.javaclass.servisClass.FileChooserRun.selectedOpenFile;
 
 @Slf4j
@@ -49,15 +50,20 @@ public class Controller {
     public static String isCalc = "UNKNOWN";
     public String lineCount;
     public String headSourceOGZ84 = "Час,    Широта,    Довгота,    Висота,    Час,    Широта,    Довгота,    Висота \n";
-    public String headOgz84 = "Час,    Широта,    Довгота,    Висота,       Час,    Широта,    Довгота,    Висота,    " + "Відстань 2D,    Відстань 3D,      Кут відхилення\n";
-    public String headDMStoDD = "Широта,         Довгота,                Широта,          Довгота,          Висота   \n";
-    public String headDDtoCK42 = "Широта,   Довгота,          Широта,    Довгота,   Висота,            X,        Y,      H  \n";
-    public String headCK42toDD = "X,        Y,      H,         Широта,   Довгота,    Висота \n";
+    public String headSourcePGZ84 = "Широта,      Довгота,      Висота,            Відстань,      Азимут \n";
+    public String headOgz84 = "Час,    Широта,    Довгота,    Висота,             Час,     Широта,    Довгота,    Висота,        " + "Відстань 2D,    Відстань 3D,      Кут відхилення\n";
+    public String headPgz84 = "Широта,      Довгота,      Висота,        Відстань,     Азимут,       Широта,     Довгота \n";
+    public String headDMStoDD = "Широта (ГМС),         Довгота (ГМС),                Широта (град.),          Довгота (град.),          Висота   \n";
+    public String headDDtoCK42 = "\"Широта (град.),         Довгота (град.),                Широта (ГМС),          Довгота (ГМС),          Висота  ,              X,        Y,      H  \n";
+    public String headDMStoCK42 = "\"Широта (ГМС),         Довгота (ГМС),                Широта (град.),          Довгота (град.),          Висота  ,              X,        Y,      H  \n";
+    public String headCK42toDD = "X,        Y,      H,         Широта (ГМС),         Довгота (ГМС),                Широта (град.),          Довгота (град.),          Висота  \n";
 
     public static List<SourceOGZ84> sourceOGZ84 = new ArrayList<>();
+    public static List<SourcePGZ84> sourcePGZ84 = new ArrayList<>();
     public static List<SourceDMS> sourceDMS = new ArrayList<>();
     public static List<SourceDD> sourceDD = new ArrayList<>();
     public static List<Ogz84> rezultsOGZ84 = new ArrayList<>();
+    public static List<Pgz84> rezultsPGZ84 = new ArrayList<>();
     public static List<DMStoDD> rezultsDMStoDD = new ArrayList<>();
     public static List<DDtoDMS> rezultsDDtoDMS = new ArrayList<>();
     public static List<DMStoCK42> rezultsDMStoCK42 = new ArrayList<>();
@@ -90,8 +96,7 @@ public class Controller {
         }
     }
 
-    public void getSoursOGZ84() throws Exception {
-
+    public void getSourceOGZ84() throws Exception {
         FileReader fileReader = new FileReader(selectedOpenFile);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -132,6 +137,55 @@ public class Controller {
         String textForTextArea = String.join("", soursStrings);
         outputText.setText(String.valueOf(new StringBuilder()
                 .append(headSourceOGZ84)
+                .append(textForTextArea)));
+
+        lineCount = String.valueOf(lineNumber - 4);
+        labelLineCount.setText("Cтрок:  " + lineCount);
+
+        getSettings.getGMT();
+
+        statusLabel.setText("Вхідні дані");
+        statusBar.setText(openFile);
+    }
+
+    public void getSourcePGZ84() throws Exception {
+        FileReader fileReader = new FileReader(selectedOpenFile);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        int lineNumber = 0;
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+
+            //line = line.replaceAll(";", ",");
+            line = line.replaceAll(",", ".");
+
+
+            //String[] split = line.split(",");
+            String[] split = line.split(";");
+
+            if (split.length <= 3 || lineNumber < 4) {
+                lineNumber++;
+                continue;
+            }
+
+            lineNumber++;
+
+            SourcePGZ84 source = new SourcePGZ84(
+                    Double.parseDouble(split[0]),
+                    Double.parseDouble(split[1]),
+                    Double.parseDouble(split[2]),
+                    Double.parseDouble(split[3]),
+                    Double.parseDouble(split[4]));
+            sourcePGZ84.add(source);
+        }
+        rezultsPGZ84 = rezultPGZ84Bulk(sourcePGZ84);
+
+        fileReader.close();
+
+        List<String> soursStrings = sourcePGZ84.stream().map(SourcePGZ84::toString).collect(Collectors.toList());
+        String textForTextArea = String.join("", soursStrings);
+        outputText.setText(String.valueOf(new StringBuilder()
+                .append(headSourcePGZ84)
                 .append(textForTextArea)));
 
         lineCount = String.valueOf(lineNumber - 4);
@@ -240,37 +294,65 @@ public class Controller {
     }
 
     public void openDataDMStoDD() throws Exception {
+        openFile();
         getSourceDMS();
         rezultsDMStoDD = rezultDMStoDDBulk(sourceDMS);
+        status = "DMStoDD";
+    }
+
+    public void openDataCompare() throws Exception {
+        openFile();
+        getSourceOGZ84();
+        status = "Compare";
+    }
+
+    public void openDataOGZWGS84() throws Exception {
+        openFile();
+        getSourceOGZ84();
+        status = "OGZ84";
     }
 
     public void openDataDMStoCK42() throws Exception {
+        openFile();
         getSourceDMS();
         rezultsDMStoCK42 = rezultDMStoCK42Bulk(sourceDMS);
+        status = "DMStoCK42";
     }
 
     public void openDataDDtoDMS() throws Exception {
+        openFile();
         getSourceDD();
         rezultsDDtoDMS = rezultDDtoDMSBulk(sourceDD);
+        status = "DDtoDMS";
     }
 
     public void openDataDDtoCK42() throws Exception {
+        openFile();
         getSourceDD();
         rezultsDDtoCK42 = rezultDDtoCK42Bulk(sourceDD);
+        status = "DDtoCK42";
     }
 
     public void openDataCK42toDD() throws Exception {
+        openFile();
         getSourceDD();
         rezultsCK42toDD = rezultCK42toDDBulk(sourceDD);
+        status = "CK42toDD";
     }
 
     public void openDataOGZ84() throws Exception {
         openFile();
-        getSoursOGZ84();
+        getSourceOGZ84();
         status = "OGZ84";
     }
 
-    public void onClickCalculate(ActionEvent actionEvent) {
+    public void openDataPGZ84() throws Exception {
+        openFile();
+        getSourcePGZ84();
+        status = "PGZ84";
+    }
+
+    public void onClickCalculate( ActionEvent actionEvent ) {
 
         switch (status) {
             case ("UNKNOWN"):
@@ -309,6 +391,21 @@ public class Controller {
                 statusBar.setText(openFile);
                 statusLabel.setText("Розраховані дані");
                 isCalc = "OGZ84";
+                break;
+
+            case ("PGZ84"):
+                try {
+                    List<String> rezultStrings = rezultsPGZ84.stream().map(Pgz84::toString).collect(Collectors.toList());
+                    String textForTextArea = String.join("", rezultStrings);
+                    outputText.setText(String.valueOf(new StringBuilder()
+                            .append(headPgz84)
+                            .append(textForTextArea)));
+                } catch (NumberFormatException e) {
+                    inform.alert();
+                }
+                statusBar.setText(openFile);
+                statusLabel.setText("Розраховані дані");
+                isCalc = "PGZ84";
                 break;
 
             case ("DMStoDD"):
@@ -361,7 +458,7 @@ public class Controller {
                     List<String> rezultStrings = rezultsDMStoCK42.stream().map(DMStoCK42::toString).collect(Collectors.toList());
                     String textForTextArea = String.join("", rezultStrings);
                     outputText.setText(String.valueOf(new StringBuilder()
-                            .append(headDDtoCK42)
+                            .append(headDMStoCK42)
                             .append(textForTextArea)));
                 } catch (NumberFormatException e) {
                     inform.alert();
@@ -388,7 +485,7 @@ public class Controller {
         }
     }
 
-    public void onClickChart(ActionEvent actionEvent) throws IOException {
+    public void onClickChart( ActionEvent actionEvent ) throws IOException {
         progressIndicator.setVisible(true);
         if (status.equals("UNKNOWN") || isCalc.equals("UNKNOWN")) {
             statusBar.setText("Помилка! Відсутні дані для відображення");
@@ -407,9 +504,11 @@ public class Controller {
                 break;
 
             case ("OGZ84"):
+            case ("PGZ84"):
             case ("DMStoDD"):
             case ("DDtoDMS"):
             case ("DDtoCK42"):
+            case ("DMStoCK42"):
             case ("CK42toDD"):
                 os.viewURL = "/view/chartConverter.fxml";
                 os.title = "Графік GPS   " + openFile;
@@ -420,14 +519,14 @@ public class Controller {
         progressIndicator.setVisible(false);
     }
 
-    public void onClickOpenFileInDesktop(ActionEvent actionEvent) throws IOException {
+    public void onClickOpenFileInDesktop( ActionEvent actionEvent ) throws IOException {
         Desktop desktop = Desktop.getDesktop();
         fileChooserRun.openFileChooser();
         desktop.open(selectedOpenFile);
     }
 
     @SneakyThrows
-    public void onClickSave(ActionEvent actionEvent) throws IOException {
+    public void onClickSave( ActionEvent actionEvent ) throws IOException {
         progressIndicatorRun();
         if (status.equals("UNKNOWN") || isCalc.equals("UNKNOWN")) {
 //            log.warn("Ogz84 is empty");
@@ -446,6 +545,7 @@ public class Controller {
                 new FileChooser.ExtensionFilter("*.csv", "*.csv"),
                 new FileChooser.ExtensionFilter("*.*", "*.*"));
         //fileChooser.setInitialFileName("Comparis_" + openFile);
+        fileChooser.setInitialFileName(openFile + "_result.csv");
         File userDirectory = new File(openDirectory);
         fileChooser.setInitialDirectory(userDirectory);
         File file = fileChooser.showSaveDialog((new Stage()));
@@ -463,6 +563,19 @@ public class Controller {
                 }
                 osw.close();
                 statusBar.setText("Успішно записано в файл  '" + openFile + "_ogz.csv'");
+                break;
+
+            case ("PGZ84"):
+                fileChooser.setInitialFileName(openFile + "_pgz.csv");
+                OutputStreamWriter oswp = new OutputStreamWriter(new FileOutputStream(file, false), "CP1251");
+                oswp.write("Результати розрахунку\n");
+                oswp.write("Пряма геодезична задача\n");
+                oswp.write(headPgz84);
+                for (Pgz84 rezult : rezultsPGZ84) {
+                    oswp.write(rezult.toString());
+                }
+                oswp.close();
+                statusBar.setText("Успішно записано в файл  '" + openFile + "_pgz.csv'");
                 break;
 
             case ("DMStoDD"):
@@ -495,12 +608,25 @@ public class Controller {
                 fileChooser.setInitialFileName(openFile + "_CK-42.csv");
                 OutputStreamWriter osw3 = new OutputStreamWriter(new FileOutputStream(file, false), "CP1251");
                 osw3.write("Результати розрахунку WGS-84 - CK-42\n");
-                osw3.write("WGS-84,,       CK-42 \n");
+                osw3.write("WGS-84,,         WGS-84 (ГМС),,         CK-42 \n");
                 osw3.write(headDDtoCK42);
                 for (DDtoCK42 rezult : rezultsDDtoCK42) {
                     osw3.write(rezult.toString());
                 }
                 osw3.close();
+                statusBar.setText("Успішно записано в файл  '" + openFile + "_CK-42.csv");
+                break;
+
+            case ("DMStoCK42"):
+                fileChooser.setInitialFileName(openFile + "_CK-42.csv");
+                OutputStreamWriter osw5 = new OutputStreamWriter(new FileOutputStream(file, false), "CP1251");
+                osw5.write("Результати розрахунку WGS-84 - CK-42\n");
+                osw5.write("WGS-84 (ГМС),,          WGS-84 (градуси),,         CK-42 \n");
+                osw5.write(headDDtoCK42);
+                for (DDtoCK42 rezult : rezultsDDtoCK42) {
+                    osw5.write(rezult.toString());
+                }
+                osw5.close();
                 statusBar.setText("Успішно записано в файл  '" + openFile + "_CK-42.csv");
                 break;
 
@@ -522,53 +648,43 @@ public class Controller {
 
     public void choiceCoordinateConverter() throws Exception {
         if (choiceCoordinateConverter.getValue().equals("ГМС в Градуси")) {
-            openFile();
             openDataDMStoDD();
-            status = "DMStoDD";
         }
         if (choiceCoordinateConverter.getValue().equals("Градуси в ГМС")) {
-            openFile();
             openDataDDtoDMS();
-            status = "DDtoDMS";
         }
         if (choiceCoordinateConverter.getValue().equals("WGS-84 в СК-42 (градуси)")) {
-            openFile();
             openDataDDtoCK42();
-            status = "DDtoCK42";
         }
         if (choiceCoordinateConverter.getValue().equals("WGS-84 в СК-42 (ГМС)")) {
-            openFile();
             openDataDMStoCK42();
-            status = "DMStoCK42";
         }
         if (choiceCoordinateConverter.getValue().equals("СК-42 в WGS-84")) {
-            openFile();
             openDataCK42toDD();
-            status = "CK42toDD";
         }
     }
 
     public void choiceGeoProblem() throws Exception {
         if (choiceGeoProblem.getValue().equals("Порівняння координат")) {
-            openFile();
-            getSoursOGZ84();
-            status = "Compare";
+            openDataCompare();
+
         }
         if (choiceGeoProblem.getValue().equals("Обернена геодезична задача (градуси)")) {
-            openFile();
-            getSoursOGZ84();
-            status = "OGZ84";
+            openDataOGZWGS84();
+        }
+        if (choiceGeoProblem.getValue().equals("Пряма геодезична задача (градуси)")) {
+            openDataPGZ84();
         }
     }
 
-    public void onClickDovBtn(ActionEvent actionEvent) throws IOException {
+    public void onClickDovBtn( ActionEvent actionEvent ) throws IOException {
 //        String url = "D:/EulerConverter/userManual/UserManual_Euler.pdf";
 //        Desktop desktop = Desktop.getDesktop();
 //        desktop.open(new File(url));
 
     }
 
-    public void onClickMenuHAM(ActionEvent actionEvent) throws IOException {
+    public void onClickMenuHAM( ActionEvent actionEvent ) throws IOException {
         if (Desktop.isDesktopSupported()) {
 //            String url = "D:/EulerConverter/userManual/UserManual_HAM.pdf";
 //            Desktop desktop = Desktop.getDesktop();
@@ -576,7 +692,7 @@ public class Controller {
         }
     }
 
-    public void onClick_menuAbout(ActionEvent actionEvent) throws IOException {
+    public void onClick_menuAbout( ActionEvent actionEvent ) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/about.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage(StageStyle.TRANSPARENT);
@@ -585,13 +701,15 @@ public class Controller {
         stage.show();
     }
 
-    public void onClickNew(ActionEvent e) {
+    public void onClickNew( ActionEvent e ) {
         outputText.setText("");
         statusBar.setText("");
         statusLabel.setText("Відкрийте файл");
         labelLineCount.setText(" ");
         sourceOGZ84.clear();
+        sourcePGZ84.clear();
         rezultsOGZ84.clear();
+        rezultsPGZ84.clear();
         sourceDMS.clear();
         rezultsDMStoDD.clear();
         sourceDD.clear();
@@ -605,7 +723,7 @@ public class Controller {
         isCalc = "UNKNOWN";
     }
 
-    public void onClickLocalZone(ActionEvent event) throws IOException {
+    public void onClickLocalZone( ActionEvent event ) throws IOException {
         os.viewURL = "/view/Settings.fxml";
         os.title = "Часовий пояс   " + openFile;
         os.isModality = true;
@@ -620,10 +738,10 @@ public class Controller {
         });
     }
 
-    public void onClickGoogleEarth(ActionEvent actionEvent) {
+    public void onClickGoogleEarth( ActionEvent actionEvent ) {
     }
 
-    public void onClickGetBlank(ActionEvent actionEvent) throws IOException {
+    public void onClickGetBlank( ActionEvent actionEvent ) throws IOException {
         os.viewURL = "/view/getBlank.fxml";
         os.title = "Отримання бланку для розрахунків";
         os.isModality = true;
@@ -631,7 +749,7 @@ public class Controller {
         os.openStage();
     }
 
-    public void onClickCancelBtn(ActionEvent e) {
+    public void onClickCancelBtn( ActionEvent e ) {
         System.exit(0);
     }
 }
