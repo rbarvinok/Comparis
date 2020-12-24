@@ -23,10 +23,11 @@
                 <Menu mnemonicParsing="false" text="Інструменти">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickCalculate" text="Розрахувати" />
-                        <MenuItem mnemonicParsing="false" onAction="#onClickGoogleEarth" text="Відкрити GoogleEarthPro" />
+                        <MenuItem mnemonicParsing="false" onAction="#onClickAccuracy" text="Відкрити GoogleEarthPro" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickChart" text="Графік" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickOpenFileInDesktop" text="Перегляд файлу" />
+                  <MenuItem mnemonicParsing="false" onAction="#getSoursNMEA" text="Вилучення даних з NMEA-0183" />
                     </items>
                 </Menu>
             <Menu mnemonicParsing="false" text="Конвертер координат">
@@ -65,7 +66,6 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Допомога">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#onClickMenuHAM" text="Керівництво НАМ" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickDovBtn" text="Керівництво оператора ПЗ" />
                         <MenuItem mnemonicParsing="false" onAction="#onClick_menuAbout" text="Про програму" />
                     </items>
@@ -128,6 +128,30 @@
                         <Tooltip text="Геодезичні задачі" />
                     </tooltip>
                 </ComboBox>
+            <Button layoutX="424.0" layoutY="9.0" mnemonicParsing="false" onAction="#getSoursNMEA" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+               <tooltip>
+                  <Tooltip text="Вилучення даних з NMEA-0381" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/NMEA_4182j.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+                <Button fx:id="tVel" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickAccuracy" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                    <tooltip>
+                        <Tooltip text="Відкрити GoogleEarthPro" />
+                    </tooltip>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/pencil%20ruler.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
                 <Separator layoutX="211.0" layoutY="10.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0">
                     <tooltip>
                         <Tooltip text="Зактити програму" />
@@ -153,18 +177,6 @@
                         <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/Chart.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="tVel" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickGoogleEarth" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-                    <tooltip>
-                        <Tooltip text="Відкрити GoogleEarthPro" />
-                    </tooltip>
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/globe.png" />
                             </image>
                         </ImageView>
                     </graphic>

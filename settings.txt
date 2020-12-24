@@ -1,1 +1,4 @@
-GMT=GMT+2
+GMT=2
+Latitude=51.66609269
+Longitude=30.90034334
+Altitude=145.25

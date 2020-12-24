@@ -10,14 +10,14 @@
 
 <AnchorPane id="about" cacheShape="false" centerShape="false" focusTraversable="true" onDragDetected="#OnClick_btnAboutExit" prefHeight="500.0" prefWidth="600.0" scaleShape="false" stylesheets="@../styles/day.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.Controller_about">
    <children>
-      <ImageView fitHeight="213.0" fitWidth="296.0" layoutX="217.0" layoutY="126.0" onDragDetected="#OnClick_btnAboutExit" onKeyPressed="#OnClick_btnAboutExit" onMouseDragEntered="#OnClick_btnAboutExit" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="365.0" fitWidth="383.0" layoutX="158.0" layoutY="68.0" onDragDetected="#OnClick_btnAboutExit" onKeyPressed="#OnClick_btnAboutExit" onMouseDragEntered="#OnClick_btnAboutExit" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/dnvc1.png" />
+            <Image url="@../images/1.jpg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="19.0" layoutY="84.0" mouseTransparent="true" prefHeight="53.0" prefWidth="634.0" text="В КУТИ ЕЙЛЕРА" textAlignment="CENTER" textFill="#da0b19" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="93.0" layoutY="114.0" mouseTransparent="true" prefHeight="125.0" prefWidth="478.0" text="пакетна обробка географічних даних" textAlignment="CENTER" textFill="#cf1b27" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font name="Verdana Bold" size="28.0" />
+            <Font name="Verdana Bold Italic" size="36.0" />
          </font>
          <effect>
             <DropShadow spread="0.51" />
@@ -38,7 +38,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label layoutX="62.0" layoutY="333.0" prefHeight="68.0" prefWidth="548.0" text="Державний науково-дослідний інститут випробувань та сертифікації озброєння і військової техніки" textAlignment="CENTER" textFill="#05f531" wrapText="true">
+      <Label layoutX="97.0" layoutY="335.0" prefHeight="98.0" prefWidth="468.0" text="Державний науково-дослідний інститут випробувань і сертифікації озброєння та військової техніки" textAlignment="CENTER" textFill="#05f531" wrapText="true">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -46,38 +46,41 @@
             <DropShadow height="20.76" radius="11.4225" spread="0.37" width="26.93" />
          </effect>
       </Label>
-      <Label layoutX="617.0" layoutY="454.0" text="2020" textFill="#1d1e1e">
+      <Label layoutX="548.0" layoutY="455.0" text="2021 рік" textFill="#1d1e1e">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
-         <effect>
-            <DropShadow spread="0.3" />
-         </effect>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="52.0" prefHeight="38.0" prefWidth="673.0" text="КОНВЕРТЕР КВАТЕРНІОНІВ " textAlignment="CENTER" textFill="#da0e18">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="162.0" layoutY="33.0" prefHeight="63.0" prefWidth="339.0" text="COMPARIS" textAlignment="CENTER" textFill="#da0e18">
          <font>
-            <Font name="Verdana Bold" size="28.0" />
+            <Font name="Verdana Bold" size="48.0" />
          </font>
          <effect>
             <DropShadow spread="0.51" />
          </effect>
       </Label>
-      <Label layoutX="53.0" layoutY="436.0" prefHeight="35.0" prefWidth="91.0" text="м. Чернігів" textAlignment="CENTER" textFill="#1e1e1e">
+      <Label layoutX="52.0" layoutY="447.0" prefHeight="35.0" prefWidth="91.0" text="м. Чернігів" textAlignment="CENTER" textFill="#1e1e1e">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
-         <effect>
-            <DropShadow spread="0.35" />
-         </effect>
       </Label>
-      <Label layoutX="301.0" layoutY="409.0" prefHeight="27.0" prefWidth="110.0" text="Версія 1.01.02" textFill="#0f0f0f">
+      <Label layoutX="294.0" layoutY="451.0" prefHeight="27.0" prefWidth="110.0" text="Версія 1.01.02" textFill="#0f0f0f">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="267.0" prefHeight="68.0" prefWidth="548.0" text="Науково-дослідний відділ трасових систем та спеціалізованих програмних засобів" textAlignment="CENTER" textFill="#05f531" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow height="20.76" radius="11.4225" spread="0.37" width="26.93" />
+         </effect>
       </Label>
    </children>
    <styleClass>
       <String fx:value="text-field" />
       <String fx:value="about" />
+      <String fx:value="button1" />
    </styleClass>
 </AnchorPane>

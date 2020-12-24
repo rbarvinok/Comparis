@@ -42,7 +42,7 @@ public class ChartComparisController implements Initializable {
         series2.setName("Набір даних 2");
 
         //............  1
-        List<Ogz84.Latitude1> gpsLatitude1 = Controller.rezultsOGZ84.stream().map(gpsTimes -> {
+        List<Ogz84.Latitude1> gpsLatitude1 = Controller.resultsOGZ84.stream().map(gpsTimes -> {
             return new Ogz84.Latitude1(Double.parseDouble(gpsTimes.getLatitude1()), Double.parseDouble(gpsTimes.getLongitude1()));
         }).collect(Collectors.toList());
 
@@ -55,7 +55,7 @@ public class ChartComparisController implements Initializable {
 
 
         //..............  2
-        List<Ogz84.Latitude2> gpsLatitude2 = Controller.rezultsOGZ84.stream().map(gpsTimes -> {
+        List<Ogz84.Latitude2> gpsLatitude2 = Controller.resultsOGZ84.stream().map(gpsTimes -> {
             return new Ogz84.Latitude2(Double.parseDouble(gpsTimes.getLatitude2()), Double.parseDouble(gpsTimes.getLongitude2()));
         }).collect(Collectors.toList());
 
@@ -83,7 +83,7 @@ public class ChartComparisController implements Initializable {
 
 
 //////////////   1............
-        List<Ogz84.Altitude1> gpsAlt1 = Controller.rezultsOGZ84.stream().map(rezult -> {
+        List<Ogz84.Altitude1> gpsAlt1 = Controller.resultsOGZ84.stream().map(rezult -> {
             return new Ogz84.Altitude1(rezult.getLocalTime1(), Double.parseDouble(rezult.getAltitude1()));
         }).collect(Collectors.toList());
 
@@ -95,7 +95,7 @@ public class ChartComparisController implements Initializable {
         seriesAlt1.setData(Alt1);
 
 //////////////   2............
-        List<Ogz84.Altitude2> gpsAlt2 = Controller.rezultsOGZ84.stream().map(rezult -> {
+        List<Ogz84.Altitude2> gpsAlt2 = Controller.resultsOGZ84.stream().map(rezult -> {
             return new Ogz84.Altitude2(rezult.getLocalTime2(), Double.parseDouble(rezult.getAltitude2()));
         }).collect(Collectors.toList());
 

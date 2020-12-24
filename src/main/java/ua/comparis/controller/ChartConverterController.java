@@ -81,6 +81,14 @@ public class ChartConverterController implements Initializable {
             lineChart.getData().addAll(seriesDMStoCK42);
         }
 
+        if (isCalc == "NMEA") {
+            XYChart.Series seriesNMEA = new XYChart.Series();
+            seriesNMEA.setName("Координати");
+            getChartDataNMEA();
+            seriesNMEA.setData(gps);
+            lineChart.getData().addAll(seriesNMEA);
+        }
+
         if (isCalc == "CK42toDD") {
             XYChart.Series seriesWGS = new XYChart.Series();
             seriesWGS.setName("Координати");
@@ -113,7 +121,7 @@ public class ChartConverterController implements Initializable {
     }
 
     public static void getChartDataDMStoDD() {
-        List<DMStoDD.DD> gpsLatitude1 = Controller.rezultsDMStoDD.stream().map(dd -> {
+        List<DMStoDD.DD> gpsLatitude1 = Controller.resultsDMStoDD.stream().map(dd -> {
             return new DMStoDD.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
         }).collect(Collectors.toList());
 
@@ -123,8 +131,19 @@ public class ChartConverterController implements Initializable {
         }
     }
 
+    public static void getChartDataNMEA() {
+        List<NMEA.DD> gpsLatitude1 = Controller.resultsNMEA.stream().map(dd -> {
+            return new NMEA.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
+        }).collect(Collectors.toList());
+
+        gps = FXCollections.observableArrayList();
+        for (NMEA.DD latitude : gpsLatitude1) {
+            gps.add(new XYChart.Data(latitude.getLatitudeDD(), latitude.getLongitudeDD()));
+        }
+    }
+
     public static void getChartDataDDtoDMS() {
-        List<DDtoDMS.DD> gpsLatitude = Controller.rezultsDDtoDMS.stream().map(dd -> {
+        List<DDtoDMS.DD> gpsLatitude = Controller.resultsDDtoDMS.stream().map(dd -> {
             return new DDtoDMS.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
         }).collect(Collectors.toList());
 
@@ -135,7 +154,7 @@ public class ChartConverterController implements Initializable {
     }
 
     public static void getChartDataDDtoCK42() {
-        List<DDtoCK42.DD> gpsLatitude = Controller.rezultsDDtoCK42.stream().map(dd -> {
+        List<DDtoCK42.DD> gpsLatitude = Controller.resultsDDtoCK42.stream().map(dd -> {
             return new DDtoCK42.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
         }).collect(Collectors.toList());
 
@@ -146,7 +165,7 @@ public class ChartConverterController implements Initializable {
     }
 
     public static void getChartDataDMStoCK42() {
-        List<DMStoCK42.DD> gpsLatitude = Controller.rezultsDMStoCK42.stream().map(dd -> {
+        List<DMStoCK42.DD> gpsLatitude = Controller.resultsDMStoCK42.stream().map(dd -> {
             return new DMStoCK42.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
         }).collect(Collectors.toList());
 
@@ -157,7 +176,7 @@ public class ChartConverterController implements Initializable {
     }
 
     public static void getChartDataCK42toDD() {
-        List<CK42toDD.DD> gpsLatitude = Controller.rezultsCK42toDD.stream().map(dd -> {
+        List<CK42toDD.DD> gpsLatitude = Controller.resultsCK42toDD.stream().map(dd -> {
             return new CK42toDD.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
         }).collect(Collectors.toList());
 
@@ -169,7 +188,7 @@ public class ChartConverterController implements Initializable {
 
     public static void getChartDataOGZ() {
         //............  1
-        List<Ogz84.Latitude1> gpsLatitude1 = Controller.rezultsOGZ84.stream().map(gpsTimes -> {
+        List<Ogz84.Latitude1> gpsLatitude1 = Controller.resultsOGZ84.stream().map(gpsTimes -> {
             return new Ogz84.Latitude1(Double.parseDouble(gpsTimes.getLatitude1()), Double.parseDouble(gpsTimes.getLongitude1()));
         }).collect(Collectors.toList());
 
@@ -179,7 +198,7 @@ public class ChartConverterController implements Initializable {
         }
 
         //..............  2
-        List<Ogz84.Latitude2> gpsLatitude2 = Controller.rezultsOGZ84.stream().map(gpsTimes -> {
+        List<Ogz84.Latitude2> gpsLatitude2 = Controller.resultsOGZ84.stream().map(gpsTimes -> {
             return new Ogz84.Latitude2(Double.parseDouble(gpsTimes.getLatitude2()), Double.parseDouble(gpsTimes.getLongitude2()));
         }).collect(Collectors.toList());
 
@@ -191,7 +210,7 @@ public class ChartConverterController implements Initializable {
 
     public static void getChartDataPGZ() {
         //............  1
-        List<Pgz84.Latitude1> gpsLatitude1 = Controller.rezultsPGZ84.stream().map(gpsTimes -> {
+        List<Pgz84.Latitude1> gpsLatitude1 = Controller.resultsPGZ84.stream().map(gpsTimes -> {
             return new Pgz84.Latitude1(gpsTimes.getLatitude1(), gpsTimes.getLongitude1());
         }).collect(Collectors.toList());
 
@@ -201,7 +220,7 @@ public class ChartConverterController implements Initializable {
         }
 
         //..............  2
-        List<Pgz84.Latitude2> gpsLatitude2 = Controller.rezultsPGZ84.stream().map(gpsTimes -> {
+        List<Pgz84.Latitude2> gpsLatitude2 = Controller.resultsPGZ84.stream().map(gpsTimes -> {
             return new Pgz84.Latitude2(gpsTimes.getLatitude2(), gpsTimes.getLongitude2());
         }).collect(Collectors.toList());
 

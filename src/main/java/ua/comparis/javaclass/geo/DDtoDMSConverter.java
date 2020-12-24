@@ -19,8 +19,8 @@ public class DDtoDMSConverter {
     int longM;
     double longS;
 
-    public static DDtoDMS rezults( SourceDD source ) {
-        DDtoDMS rezultDDtoDMS = new DDtoDMS();
+    public static DDtoDMS results( SourceDD source ) {
+        DDtoDMS resultDDtoDMS = new DDtoDMS();
 
         latD = (int) abs(source.getLatD());
         latM = (int) (abs(source.getLatD() - latD) * 60);
@@ -30,23 +30,23 @@ public class DDtoDMSConverter {
         longM = (int) (abs(source.getLongD() - longD) * 60);
         longS = rint(((source.getLongD() - longD) * 60 - longM) * 60 * 10000000) / 10000000;
 
-        rezultDDtoDMS.setLatitudeDD(source.getLatD());
-        rezultDDtoDMS.setLongitudeDD(source.getLongD());
+        resultDDtoDMS.setLatitudeDD(source.getLatD());
+        resultDDtoDMS.setLongitudeDD(source.getLongD());
 
-        rezultDDtoDMS.setLatD(latD);
-        rezultDDtoDMS.setLatM(latM);
-        rezultDDtoDMS.setLatS(latS);
-        rezultDDtoDMS.setLongD(longD);
-        rezultDDtoDMS.setLongM(longM);
-        rezultDDtoDMS.setLongS(longS);
+        resultDDtoDMS.setLatD(latD);
+        resultDDtoDMS.setLatM(latM);
+        resultDDtoDMS.setLatS(latS);
+        resultDDtoDMS.setLongD(longD);
+        resultDDtoDMS.setLongM(longM);
+        resultDDtoDMS.setLongS(longS);
 
-        rezultDDtoDMS.setAltitudeDD(source.getAltitude());
+        resultDDtoDMS.setAltitudeDD(source.getAltitude());
 
-        return rezultDDtoDMS;
+        return resultDDtoDMS;
     }
 
-    public static List<DDtoDMS> rezultDDtoDMSBulk( List<SourceDD> sources ) {
-        return sources.stream().map(DDtoDMSConverter::rezults).collect(Collectors.toList());
+    public static List<DDtoDMS> resultDDtoDMSBulk( List<SourceDD> sources ) {
+        return sources.stream().map(DDtoDMSConverter::results).collect(Collectors.toList());
     }
 }
 

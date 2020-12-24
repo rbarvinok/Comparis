@@ -27,12 +27,6 @@ public class ConverterCoordinates {
     private static final double wz = -0.82;
     // Дифференциальное различие масштабов
     private static final double ms = -0.00000012;
-    // Угловые элементы трансформирования, в секундах
-    private static final double wx9084 = 0;
-    private static final double wy9084 = 0;
-    private static final double wz9084 = -0.16;
-    // Дифференциальное различие масштабов
-    private static final double ms9084 = -0.00000012;
 
 
     private static double latitude;
@@ -41,11 +35,11 @@ public class ConverterCoordinates {
 
 
     public double getLatitude84() {
-        return Math.toDegrees(latitude);
+        return latitude;
     }
 
     public double getLongitude84() {
-        return Math.toDegrees(longitude);
+        return longitude;
     }
 
     public double getAltitude84() {
@@ -79,8 +73,6 @@ public class ConverterCoordinates {
 
     private Double dB( Double Bd, Double Ld, Double H ) {
         Double B, L, M, N;
-
-
         B = Bd * Pi / 180;
         L = Ld * Pi / 180;
         M = a * (1 - e2) / Math.pow((1 - e2 * Math.pow(Math.sin(B), 2)), 1.5);
@@ -105,8 +97,8 @@ public class ConverterCoordinates {
     private Double dH( Double Bd, Double Ld, Double H ) {
         Double B, L, N;
 
-        B = Bd * Pi / 180;
-        L = Ld * Pi / 180;
+        B = Bd * Pi / 180; //преобразование в радианы
+        L = Ld * Pi / 180; //преобразование в радианы
         N = a * Math.sqrt((1 - e2 * Math.pow(Math.sin(B), 2)));
         return -a / N * da + N * Math.pow(Math.sin(B), 2) * de2 / 2 + (dx * Math.cos(L) +
                 dy * Math.sin(L)) * Math.cos(B) +

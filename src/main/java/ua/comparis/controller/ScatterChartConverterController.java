@@ -101,6 +101,14 @@ public class ScatterChartConverterController implements Initializable {
             seriesPGZ2.setData(gps2);
             scatterChart.getData().addAll(seriesPGZ1, seriesPGZ2);
         }
+
+        if (isCalc == "NMEA") {
+            XYChart.Series seriesNMEA = new XYChart.Series();
+            seriesNMEA.setName("Координати");
+            getChartDataNMEA();
+            seriesNMEA.setData(gps);
+            scatterChart.getData().addAll(seriesNMEA);
+        }
     }
 
     public void onClickLineChart(ActionEvent actionEvent) throws IOException {

@@ -36,8 +36,6 @@ public class ConverterCoordinateSystem {
 
 
         double n, l, b, z0, B0, DB;
-        //n = Math.Truncate(y * 0.000001);
-        //n = Math.floor(y * 0.000001);
         n = (int) (y * 0.000001);
 
         b = x / 6367558.4968;
@@ -52,7 +50,7 @@ public class ConverterCoordinateSystem {
                                         pow(z0, 2) * (0.0038 + 0.0524 * pow(sin(B0), 2) + 0.0482 * pow(sin(B0), 4) + 0.0032 * pow(sin(B0), 6))))));
 
 
-        DB = - pow(z0, 2) * sin(2 * B0) * (0.251684631 - 0.003369263 * pow(sin(B0), 2) + 0.000011276 * pow(sin(B0), 4) -    //  *  Math.Pow(Math.Sin(B0),2)
+        DB = -pow(z0, 2) * sin(2 * B0) * (0.251684631 - 0.003369263 * pow(sin(B0), 2) + 0.000011276 * pow(sin(B0), 4) -    //  *  Math.Pow(Math.Sin(B0),2)
                 pow(z0, 2) * (0.10500614 - 0.04559916 * pow(sin(B0), 2) + 0.00228901 * pow(sin(B0), 4) - 0.00002987 * pow(sin(B0), 6) -
                         pow(z0, 2) * (0.042858 - 0.025318 * pow(sin(B0), 2) + 0.014346 * pow(sin(B0), 4) - 0.001264 * pow(sin(B0), 6) -
                                 pow(z0, 2) * (0.01672 - 0.00630 * pow(sin(B0), 2) + 0.01188 * pow(sin(B0), 4) - 0.00328 * pow(sin(B0), 6)))));
@@ -60,6 +58,7 @@ public class ConverterCoordinateSystem {
         latitude42 = B0 + DB;
         longitude42 = 6 * (n - 0.5) / 57.29577951 + l;
         altitude42 = h;
+        //System.out.println(Math.toDegrees(latitude42) + "     " + Math.toDegrees(longitude42) + "     " + altitude42);
     }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,19 +85,16 @@ public class ConverterCoordinateSystem {
         calculateGK_x(latitude, longitude, altitude);
         calculateGK_y(latitude, longitude, altitude);
         calculateN(longitude);
-        //System.out.println(latitude + "     " + longitude + "     " + altitude);
     }
 
     private static void calculateN( double L ) {//номер шестиградусной зоны в проекции Гаусса-Крюгера
-//        n = Math.rint((6 + (L * 180 / Math.PI)) / 6);
-        n = (int)((6 + (L * 180 / PI)) / 6);
-        //n = (int)(L * 180 / Math.PI);
+        n = (int) ((6 + (L * 180 / PI)) / 6);
     }
 
     private static void calculateGK_x( double B, double L, double h ) {
         double l = ((L * 180 / PI) - (3 + 6 * (n - 1))) / 57.29577951;
         GK_x = (6367558.4968 * B) - sin(2 * B) * (16002.8900 + 66.9607 * pow(sin(B), 2) + 0.3515 * pow(sin(B), 4) -  // (6367558.4968 * B) - 2 * Math.Sin(B) *
-               pow(l, 2) * (1594561.25 + 5336.535 *
+                pow(l, 2) * (1594561.25 + 5336.535 *
                         pow(sin(B), 2) + 26.790 *
                         pow(sin(B), 4) + 0.149 * pow(sin(B), 6) +
                         pow(l, 2) * (672483.4 - 811219.9 *
@@ -165,10 +161,10 @@ public class ConverterCoordinateSystem {
 
     //-----------------------------------------------------------------
 
-    public static DMStoCK42 rezCK42(SourceDMS source ) {
+    public static DMStoCK42 rezCK42( SourceDMS source ) {
 
-        double latitudeDD = (Math.rint((source.getLatD()+Double.valueOf(source.getLatM())/60+Double.valueOf(source.getLatS())/60/60)*100000000)/100000000);
-        double longitudeDD = (Math.rint((source.getLongD()+Double.valueOf(source.getLongM())/60+Double.valueOf(source.getLongS())/60/60)*100000000)/100000000);
+        double latitudeDD = (Math.rint((source.getLatD() + Double.valueOf(source.getLatM()) / 60 + Double.valueOf(source.getLatS()) / 60 / 60) * 100000000) / 100000000);
+        double longitudeDD = (Math.rint((source.getLongD() + Double.valueOf(source.getLongM()) / 60 + Double.valueOf(source.getLongS()) / 60 / 60) * 100000000) / 100000000);
 
         ConverterCoordinates wgs84toCk42 = new ConverterCoordinates();
         wgs84toCk42.Wgs84ToCk42Converter(latitudeDD, longitudeDD, source.getAltitude());
@@ -208,7 +204,7 @@ public class ConverterCoordinateSystem {
         GKtoBLh(source.getLatD(), source.getLongD(), source.getAltitude());
 
         ConverterCoordinates CK42toWGS84 = new ConverterCoordinates();
-        CK42toWGS84.Ck42ToWgs84Converter(latitude42, longitude42, altitude42);
+        CK42toWGS84.Ck42ToWgs84Converter(Math.toDegrees(latitude42), Math.toDegrees(longitude42), altitude42);
 
         int latD = (int) abs(CK42toWGS84.getLatitude84());
         int latM = (int) (abs(CK42toWGS84.getLatitude84() - latD) * 60);

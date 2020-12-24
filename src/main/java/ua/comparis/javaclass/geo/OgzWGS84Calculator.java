@@ -12,11 +12,12 @@ import static java.lang.StrictMath.*;
 @UtilityClass
 public class OgzWGS84Calculator {
 
-    public static Ogz84 rezults(SourceOGZ84 source) {
+    public static Ogz84 rezults( SourceOGZ84 source ) {
         Ogz84 rezultOGZ84 = new Ogz84();
 
         double dist;
         double dist3D;
+        double deltaH;
         double ang1 = 0;
         double ang2;
 
@@ -70,7 +71,7 @@ public class OgzWGS84Calculator {
 
         dist = b * A * (q - dq);
         dist3D = sqrt(pow(dist, 2) + pow((alt1 - alt2), 2));
-
+        deltaH = alt1 - alt2;
 
         double a1 = atan(cosU2 * siny / (cosU1 * sinU2 - sinU1 * cosU2 * cosy));
         double dl = lat2 - lat1;
@@ -95,11 +96,11 @@ public class OgzWGS84Calculator {
         rezultOGZ84.setDistance2D(rint(dist * 1000) / 1000);
         rezultOGZ84.setDistance3D(rint(dist3D * 1000) / 1000);
         rezultOGZ84.setAngle(rint(ang1 * 100) / 100);
-
+        rezultOGZ84.setDeltaH(rint(deltaH * 1000) / 1000);
         return rezultOGZ84;
     }
 
-    public static List<Ogz84> rezultOGZ84Bulk(List<SourceOGZ84> sources) {
+    public static List<Ogz84> rezultOGZ84Bulk( List<SourceOGZ84> sources ) {
         return sources.stream().map(OgzWGS84Calculator::rezults).collect(Collectors.toList());
     }
 }

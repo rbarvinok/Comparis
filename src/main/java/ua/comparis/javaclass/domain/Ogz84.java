@@ -19,6 +19,7 @@ public class Ogz84 {
     private double distance2D;
     private double distance3D;
     private double angle;
+    private double deltaH;
 
     @AllArgsConstructor
     @Data
@@ -55,9 +56,9 @@ public class Ogz84 {
 
     @Override
     public String toString() {
-        return localTime1 + ",    " +latitude1 + ",    " + longitude1 + ",    " + altitude1 + ",        "  +
-                localTime2 + ",    " +latitude2 + ",    " + longitude2 + ",    " + altitude2  + ",         " +
-                distance2D + ",    " + distance3D + ",      " + angle + "\n";
+        return localTime1 + ",    " +latitude1 + ",    " +longitude1 + ",    " + altitude1 + ",        "  +
+                localTime2 + ",    " +latitude2 + ",    " +longitude2 + ",    " + altitude2  + ",         " +
+                distance2D + ",    " + distance3D + ",      " +angle + ",      " + deltaH +"\n";
     }
 
     public String toStringKML1() {
