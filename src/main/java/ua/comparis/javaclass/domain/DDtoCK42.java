@@ -8,6 +8,7 @@ public class DDtoCK42 {
     private double latitudeDD;
     private double longitudeDD;
     private double altitudeDD;
+    private String memo;
 
     private int latD;
     private int latM;
@@ -51,6 +52,6 @@ public class DDtoCK42 {
 
     @Override
     public String toString() {
-        return latitudeDD + ",    " + longitudeDD + ",        " + latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\"" + ",         " + altitudeDD + ",            " + xCK42 + ",    " + yCK42 + ",    " + hCK42 + "\n";
+        return latitudeDD + ",    " + longitudeDD + ",        " + latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\"" + ",         " + altitudeDD + ",            " + xCK42 + ",    " + yCK42 + ",    " + hCK42 + ",    " + memo +"\n";
     }
 }

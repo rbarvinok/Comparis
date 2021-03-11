@@ -16,6 +16,8 @@ public class DMStoDD {
     private double longitudeDD;
     private double altitudeDD;
 
+    private String memo;
+
     @AllArgsConstructor
     @Data
     public static class DD {
@@ -36,6 +38,6 @@ public class DMStoDD {
     }
     @Override
     public String toString() {
-        return latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\",          " + latitudeDD + ",    " + longitudeDD + ",        " + altitudeDD + "\n";
+        return latD +"°"+latM+"'"+latS+"\", "+ longD+"°"+longM+"'"+longS+"\", " + latitudeDD + ", " + longitudeDD + ", " + altitudeDD + ", " +memo+ "\n";
     }
 }

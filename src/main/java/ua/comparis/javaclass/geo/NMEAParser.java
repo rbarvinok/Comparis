@@ -15,7 +15,7 @@ public class NMEAParser {
     double latD;
     double longD;
 
-    public static NMEA rezults( SourceNMEA source ) {
+    public static NMEA results( SourceNMEA source ) {
         NMEA resultNMEA = new NMEA();
 
         time = Integer.parseInt(source.getTimeNMEA().substring(0,2)) + localZone +":" + source.getTimeNMEA().substring(2,4) + ":" + source.getTimeNMEA().substring(4);
@@ -31,7 +31,7 @@ public class NMEAParser {
     }
 
     public static List<NMEA> resultNMEABulk( List<SourceNMEA> sources ) {
-        return sources.stream().map(NMEAParser::rezults).collect(Collectors.toList());
+        return sources.stream().map(NMEAParser::results).collect(Collectors.toList());
     }
 }
 

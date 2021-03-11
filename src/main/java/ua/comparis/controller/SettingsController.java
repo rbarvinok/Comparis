@@ -6,11 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ua.comparis.javaclass.servisClass.AlertAndInform;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-import static ua.comparis.controller.AccuracyController.*;
 import static ua.comparis.controller.Controller.localZone;
 
 public class SettingsController {
@@ -19,7 +19,6 @@ public class SettingsController {
 
     @FXML
     public TextField GMTInput;
-
     @FXML
     public Button SaveNewGMT;
 
@@ -49,9 +48,6 @@ public class SettingsController {
 
         OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("settings.txt", false), "UTF-8");
         osw.write("GMT=" + localZone + "\n");
-        osw.write("Latitude=" + trueLat + "\n");
-        osw.write("Longitude=" + trueLong + "\n");
-        osw.write("Altitude=" + trueAlt + "\n");
         osw.close();
 
         Stage stage = (Stage) SaveNewGMT.getScene().getWindow();

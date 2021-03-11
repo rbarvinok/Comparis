@@ -22,15 +22,5 @@ public class SourceOGZ84 {
     public String toString() {
         return  localTime1 + ",    " +latitude1 + ",    " + longitude1 + ",    " + altitude1 + ",    "  + localTime2 + ",    " +latitude2 + ",    " + longitude2 + ",    " + altitude2  + "\n";
     }
-
-
-    public String toStringKML1() {
-        return longitude1 + "," + latitude1 + "," + altitude1  + "\n";
-    }
-
-    public String toStringKML2() {
-        return longitude2 + "," + latitude2 + "," + altitude2  + "\n";
-    }
-
 }
 

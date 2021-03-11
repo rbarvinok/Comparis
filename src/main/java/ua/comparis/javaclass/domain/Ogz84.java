@@ -60,12 +60,5 @@ public class Ogz84 {
                 localTime2 + ",    " +latitude2 + ",    " +longitude2 + ",    " + altitude2  + ",         " +
                 distance2D + ",    " + distance3D + ",      " +angle + ",      " + deltaH +"\n";
     }
-
-    public String toStringKML1() {
-        return longitude1 + "," + latitude1 + "," + altitude1  + "\n";
-    }
-    public String toStringKML2() {
-        return longitude2 + "," + latitude2 + "," + altitude2  + "\n";
-    }
 }
 

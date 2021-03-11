@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.GetBlankController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.GetBlankController">
    <children>
       <Label alignment="CENTER" layoutX="45.0" layoutY="14.0" prefHeight="22.0" prefWidth="400.0" text="Отримати бланк для розрахунків" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0">
          <font>
@@ -18,7 +18,7 @@
       <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="120.0" mnemonicParsing="false" onAction="#getDMStoDD" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Бланк градуси, мінути, секунди" textFill="#1465c9" underline="true" />
       <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="70.0" mnemonicParsing="false" onAction="#getOGZ" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Обернена геодезична задача (градуси)" textFill="#1465c9" underline="true" />
       <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="145.0" mnemonicParsing="false" onAction="#getDDtoDMS" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Бланк градуси" textFill="#1465c9" underline="true" />
-      <ImageView fitHeight="233.0" fitWidth="363.0" layoutX="71.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="233.0" fitWidth="363.0" layoutX="71.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Geo_ico/SaveAs.png" />
          </image>
@@ -27,7 +27,6 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="15.0" layoutY="277.0" prefHeight="25.0" prefWidth="475.0" text="Тип файлу - 'CSV UTF-8 (разделитель - запятая)'" underline="true" wrapText="true" />
       <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="170.0" mnemonicParsing="false" onAction="#getCK42toWGS84" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Бланк СК-42" textFill="#1465c9" underline="true" />
       <Button alignment="TOP_LEFT" layoutX="51.0" layoutY="95.0" mnemonicParsing="false" onAction="#getPGZ" prefHeight="25.0" prefWidth="312.0" styleClass="button1" stylesheets="@../styles/day.css" text="Пряма геодезична задача (градуси)" textFill="#1465c9" underline="true" />
    </children>

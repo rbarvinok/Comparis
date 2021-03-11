@@ -21,6 +21,8 @@ public class CK42toDD {
     private int longM;
     private double longS;
 
+    private String memo;
+
     @AllArgsConstructor
     @Data
     public static class DD {
@@ -40,6 +42,6 @@ public class CK42toDD {
 
     @Override
     public String toString() {
-        return xCK42 + ",    " + yCK42 + ",    " + hCK42 + ",            " + latitudeDD + ",      " + longitudeDD + ",        " + latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\"" + ",        " + altitudeDD + " \n";
+        return xCK42 + ", " + yCK42 + ", " + hCK42 + ", " + latitudeDD + ", " + longitudeDD + ",  " + latD +"°"+latM+"'"+latS+"\", "+ longD+"°"+longM+"'"+longS+"\"" + ", " + altitudeDD + ", " + memo +" \n";
     }
 }

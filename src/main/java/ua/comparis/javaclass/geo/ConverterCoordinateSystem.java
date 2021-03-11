@@ -140,6 +140,7 @@ public class ConverterCoordinateSystem {
         rezultDDtoCK42.setLatitudeDD(source.getLatD());
         rezultDDtoCK42.setLongitudeDD(source.getLongD());
         rezultDDtoCK42.setAltitudeDD(source.getAltitude());
+        rezultDDtoCK42.setMemo(source.getMemo());
 
         rezultDDtoCK42.setLatD(latD);
         rezultDDtoCK42.setLatM(latM);
@@ -152,6 +153,7 @@ public class ConverterCoordinateSystem {
         rezultDDtoCK42.setYCK42(GK_y);
         rezultDDtoCK42.setHCK42(wgs84toCk42.getAltitude42());
         rezultDDtoCK42.setZoneCK42((int) n);
+
         return rezultDDtoCK42;
     }
 
@@ -189,6 +191,7 @@ public class ConverterCoordinateSystem {
         rezultDMStoCK42.setYCK42(GK_y);
         rezultDMStoCK42.setHCK42(wgs84toCk42.getAltitude42());
         rezultDMStoCK42.setZoneCK42((int) n);
+        rezultDMStoCK42.setMemo(source.getMemo());
         return rezultDMStoCK42;
     }
 
@@ -229,6 +232,7 @@ public class ConverterCoordinateSystem {
         rezultCK42toDD.setLongD(longD);
         rezultCK42toDD.setLongM(longM);
         rezultCK42toDD.setLongS(longS);
+        rezultCK42toDD.setMemo(source.getMemo());
         return rezultCK42toDD;
     }
 

@@ -8,6 +8,7 @@ public class DDtoDMS {
     private double latitudeDD;
     private double longitudeDD;
     private double altitudeDD;
+    private String memo;
 
     private int latD;
     private int latM;
@@ -37,6 +38,6 @@ public class DDtoDMS {
     }
     @Override
     public String toString() {
-        return latitudeDD + ",    " + longitudeDD + ",        " + latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\",          " + altitudeDD + "\n";
+        return latitudeDD + ", " + longitudeDD + ", " + latD +"°"+latM+"'"+latS+"\",  "+ longD+"°"+longM+"'"+longS+"\", " + altitudeDD + ", " + memo +"\n";
     }
 }

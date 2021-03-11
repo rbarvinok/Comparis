@@ -21,6 +21,8 @@ public class DMStoCK42 {
     private double hCK42;
     private int zoneCK42;
 
+    private String memo;
+
     @AllArgsConstructor
     @Data
     public static class DD {
@@ -51,6 +53,6 @@ public class DMStoCK42 {
 
     @Override
     public String toString() {
-        return latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\"" + ",           " + latitudeDD + ",          " + longitudeDD + ",        " + altitudeDD + ",            " + xCK42 + ",    " + yCK42 + ",    " + hCK42 + "\n";
+        return latD +"°"+latM+"'"+latS+"\",  "+ longD+"°"+longM+"'"+longS+"\"" + ", " + latitudeDD + ", " + longitudeDD + ", " + altitudeDD + ", " + xCK42 + ", " + yCK42 + ", " + hCK42 + ", " + memo+ "\n";
     }
 }

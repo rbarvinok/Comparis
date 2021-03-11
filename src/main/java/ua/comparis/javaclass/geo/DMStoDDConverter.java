@@ -23,6 +23,7 @@ public class DMStoDDConverter {
         rezultDMStoDD.setLatitudeDD(Math.rint((source.getLatD()+Double.valueOf(source.getLatM())/60+Double.valueOf(source.getLatS())/60/60)*100000000)/100000000);
         rezultDMStoDD.setLongitudeDD(Math.rint((source.getLongD()+Double.valueOf(source.getLongM())/60+Double.valueOf(source.getLongS())/60/60)*100000000)/100000000);
         rezultDMStoDD.setAltitudeDD(source.getAltitude());
+        rezultDMStoDD.setMemo(source.getMemo());
 
         return rezultDMStoDD;
     }

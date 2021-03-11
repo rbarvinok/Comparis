@@ -14,11 +14,11 @@ public class SourceDMS {
     private int longM;
     private double longS;
     private double altitude;
-
+    private String memo;
 
     @Override
     public String toString() {
-        return  latD +"°"+latM+"'"+latS+"\",          "+ longD+"°"+longM+"'"+longS+"\",           " + altitude + "\n";
+        return  latD +"°"+latM+"'"+latS+"\",  "+ longD+"°"+longM+"'"+longS+"\", " + altitude + ",  " + memo +"\n";
     }
 
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="769.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.Controller">
+<VBox prefHeight="769.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.comparis.controller.Controller">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -23,42 +23,41 @@
                 <Menu mnemonicParsing="false" text="Інструменти">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickCalculate" text="Розрахувати" />
-                        <MenuItem mnemonicParsing="false" onAction="#onClickAccuracy" text="Відкрити GoogleEarthPro" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickChart" text="Графік" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onClickOpenFileInDesktop" text="Перегляд файлу" />
-                  <MenuItem mnemonicParsing="false" onAction="#getSoursNMEA" text="Вилучення даних з NMEA-0183" />
+                        <MenuItem mnemonicParsing="false" onAction="#getSoursNMEA" text="Вилучення даних з NMEA-0183" />
                     </items>
                 </Menu>
-            <Menu mnemonicParsing="false" text="Конвертер координат">
-               <items>
-                  <Menu mnemonicParsing="false" text="WGS-84">
+                <Menu mnemonicParsing="false" text="Конвертер координат">
                     <items>
-                        <Menu mnemonicParsing="false" onAction="#openDataDMStoDD" text="Градуси, мінути, секунди">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="В градуси" />
-                              <MenuItem mnemonicParsing="false" text="В СК-42" />
-                          </items>
+                        <Menu mnemonicParsing="false" text="WGS-84">
+                            <items>
+                                <Menu mnemonicParsing="false" onAction="#openDataDMStoDD" text="Градуси, мінути, секунди">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="В градуси" />
+                                        <MenuItem mnemonicParsing="false" text="В СК-42" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" onAction="#openDataDDtoDMS" text="Градуси">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="В градуси, мінути, секунди" />
+                                        <MenuItem mnemonicParsing="false" text="В СК-42" />
+                                    </items>
+                                </Menu>
+                            </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" onAction="#openDataDDtoDMS" text="Градуси">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="В градуси, мінути, секунди" />
-                            <MenuItem mnemonicParsing="false" text="В СК-42" />
-                          </items>
-                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#openDataCK42toDD" text="CK-42 в WGS-84" />
                     </items>
-                  </Menu>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#openDataCK42toDD" text="CK-42 в WGS-84" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Геодезичні задачі">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#openDataCompare" text="Порівняння координат" />
-                  <MenuItem mnemonicParsing="false" onAction="#openDataOGZWGS84" text="Обернена геодезична задача" />
-                  <MenuItem mnemonicParsing="false" text="Пряма геодезична задача" />
-               </items>
-            </Menu>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Геодезичні задачі">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#openDataCompare" text="Порівняння координат" />
+                        <MenuItem mnemonicParsing="false" onAction="#openDataOGZWGS84" text="Обернена геодезична задача" />
+                        <MenuItem mnemonicParsing="false" text="Пряма геодезична задача" />
+                    </items>
+                </Menu>
                 <Menu mnemonicParsing="false" text="Налаштування">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickLocalZone" text="Часовий пояс" />
@@ -114,7 +113,6 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
-
                 <ComboBox fx:id="choiceGeoProblem" onAction="#choiceGeoProblem" onMouseClicked="#choiceGeoProblem" prefHeight="25.0" prefWidth="141.0" promptText="Геодезичні задачі" styleClass="button1" stylesheets="@../styles/day.css" value="Геодезичні задачі">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
@@ -128,26 +126,14 @@
                         <Tooltip text="Геодезичні задачі" />
                     </tooltip>
                 </ComboBox>
-            <Button layoutX="424.0" layoutY="9.0" mnemonicParsing="false" onAction="#getSoursNMEA" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
-               <tooltip>
-                  <Tooltip text="Вилучення даних з NMEA-0381" />
-               </tooltip>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/NMEA_4182j.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-                <Button fx:id="tVel" layoutX="90.0" layoutY="9.0" mnemonicParsing="false" onAction="#onClickAccuracy" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
+                <Button layoutX="424.0" layoutY="9.0" mnemonicParsing="false" onAction="#getSoursNMEA" prefHeight="20.0" prefWidth="20.0" styleClass="button1" stylesheets="@../styles/day.css">
                     <tooltip>
-                        <Tooltip text="Відкрити GoogleEarthPro" />
+                        <Tooltip text="Вилучення даних з NMEA-0381" />
                     </tooltip>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/pencil%20ruler.png" />
+                                <Image url="@../images/NMEA_4182j.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -263,8 +249,8 @@
                 </Label>
                 <AnchorPane layoutX="19.0" layoutY="38.0" prefHeight="636.0" prefWidth="916.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
                     <children>
-                        <TextArea fx:id="outputText" editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="1089.0" promptText="Відкрийте файл ....." wrapText="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0" />
                         <ProgressIndicator fx:id="progressIndicator" layoutX="452.0" layoutY="280.0" prefHeight="72.0" prefWidth="84.0" visible="false" AnchorPane.bottomAnchor="284.0" AnchorPane.leftAnchor="452.0" AnchorPane.rightAnchor="579.0" AnchorPane.topAnchor="280.0" />
+                  <TableView fx:id="outputTable" accessibleText="Відкрийте файл даних" layoutX="13.0" prefHeight="636.0" prefWidth="1089.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
             </children>

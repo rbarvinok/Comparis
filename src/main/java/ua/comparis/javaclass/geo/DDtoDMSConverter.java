@@ -32,13 +32,13 @@ public class DDtoDMSConverter {
 
         resultDDtoDMS.setLatitudeDD(source.getLatD());
         resultDDtoDMS.setLongitudeDD(source.getLongD());
-
         resultDDtoDMS.setLatD(latD);
         resultDDtoDMS.setLatM(latM);
         resultDDtoDMS.setLatS(latS);
         resultDDtoDMS.setLongD(longD);
         resultDDtoDMS.setLongM(longM);
         resultDDtoDMS.setLongS(longS);
+        resultDDtoDMS.setMemo(source.getMemo());
 
         resultDDtoDMS.setAltitudeDD(source.getAltitude());
 
