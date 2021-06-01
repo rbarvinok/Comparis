@@ -48,7 +48,6 @@ public class Controller {
     FileChooserRun fileChooserRun = new FileChooserRun();
     GetSettings getSettings = new GetSettings();
 
-    public static String urlComparis = "D:/Comparis";
     public static int localZone = 2;
     public int colsInpDate = 0;
     public static String openFile = " ";
