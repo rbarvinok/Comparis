@@ -83,6 +83,7 @@ public class OgzWGS84Calculator {
 
         ang2 = (atan(cosU1 * siny / (-sinU1 * cosU2 - cosU1 * sinU2 * cosy))) * 180 / PI;
 
+
         rezultOGZ84.setLocalTime1(source.getLocalTime1());
         rezultOGZ84.setLatitude1(source.getLatitude1());
         rezultOGZ84.setLongitude1(source.getLongitude1());

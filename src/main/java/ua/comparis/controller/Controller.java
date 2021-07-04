@@ -29,6 +29,7 @@ import ua.comparis.javaclass.servisClass.*;
 
 import java.awt.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -936,8 +937,12 @@ public class Controller {
     }
 
     public void getSourceOGZ84() throws Exception {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+
         if (fileChooserRun.extensionFilter.equals("*.xlsx")) {
             FileInputStream inputStream = new FileInputStream(String.valueOf(selectedOpenFile));
+            openFile = selectedOpenFile.getName().substring(0, selectedOpenFile.getName().length() - 5);
             XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Row row = null;
@@ -950,11 +955,11 @@ public class Controller {
                 if (rownum >= 4) {
 
                     SourceOGZ84 source = new SourceOGZ84(
-                            String.valueOf(row.getCell(0).getNumericCellValue()),
+                            sdf.format(row.getCell(0).getDateCellValue()),
                             String.valueOf(row.getCell(1).getNumericCellValue()),
                             String.valueOf(row.getCell(2).getNumericCellValue()),
                             String.valueOf(row.getCell(3).getNumericCellValue()),
-                            String.valueOf(row.getCell(4).getNumericCellValue()),
+                            sdf.format(row.getCell(4).getDateCellValue()),
                             String.valueOf(row.getCell(5).getNumericCellValue()),
                             String.valueOf(row.getCell(6).getNumericCellValue()),
                             String.valueOf(row.getCell(7).getNumericCellValue()));
