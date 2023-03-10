@@ -89,6 +89,22 @@ public class ChartConverterController implements Initializable {
             lineChart.getData().addAll(seriesNMEA);
         }
 
+        if (isCalc == "MP") {
+            XYChart.Series seriesMP = new XYChart.Series();
+            seriesMP.setName("Координати");
+            getChartDataMFTR();
+            seriesMP.setData(gps);
+            lineChart.getData().addAll(seriesMP);
+        }
+
+        if (isCalc =="MFTR") {
+            XYChart.Series seriesMFTR = new XYChart.Series();
+            seriesMFTR.setName("Координати");
+            getChartDataMFTR();
+            seriesMFTR.setData(gps);
+            lineChart.getData().addAll(seriesMFTR);
+        }
+
         if (isCalc == "CK42toDD") {
             XYChart.Series seriesWGS = new XYChart.Series();
             seriesWGS.setName("Координати");
@@ -142,6 +158,27 @@ public class ChartConverterController implements Initializable {
         }
     }
 
+    public static void getChartDataMP() {
+        List<MP.DD> gpsLatitude1 = Controller.resultsMP.stream().map(dd -> {
+            return new MP.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
+        }).collect(Collectors.toList());
+
+        gps = FXCollections.observableArrayList();
+        for (MP.DD latitude : gpsLatitude1) {
+            gps.add(new XYChart.Data(latitude.getLatitudeDD(), latitude.getLongitudeDD()));
+        }
+    }
+
+    public static void getChartDataMFTR() {
+        List<MFTR.DD> gpsLatitude1 = Controller.resultsMFTR.stream().map(dd -> {
+            return new MFTR.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
+        }).collect(Collectors.toList());
+
+        gps = FXCollections.observableArrayList();
+        for (MFTR.DD latitude : gpsLatitude1) {
+            gps.add(new XYChart.Data(latitude.getLatitudeDD(), latitude.getLongitudeDD()));
+        }
+    }
     public static void getChartDataDDtoDMS() {
         List<DDtoDMS.DD> gpsLatitude = Controller.resultsDDtoDMS.stream().map(dd -> {
             return new DDtoDMS.DD(dd.getLatitudeDD(), dd.getLongitudeDD());
