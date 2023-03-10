@@ -12,7 +12,7 @@ import static ua.comparis.controller.Controller.openFile;
 
 public class Main extends Application {
 
-    public static String icoImage = "/images/measuring.png";
+    public static String icoImage = "/images/icon.png";
 
     @Override
     public void start(Stage primaryStage) throws Exception {
